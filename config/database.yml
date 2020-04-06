@@ -1,0 +1,23 @@
+
+default: &default
+  adapter: postgresql
+  encoding: unicode
+  pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
+  username: <%= ENV.fetch("DB_USERNAME") %>
+  password: <%= ENV.fetch("DB_PASSWORD") %>
+
+development:
+  <<: *default
+  database: academy_32_bit_development
+
+test:
+  <<: *default
+  database: academy_32_bit_test
+
+ <%= ENV['DATABASE_URL'] %>
+#
+production:
+  <<: *default
+  database: academy_32_bit_production
+  username: academy_32_bit
+  password: <%= ENV['ACADEMY_32_BIT_DATABASE_PASSWORD'] %>
