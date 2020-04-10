@@ -13,8 +13,6 @@ development:
 test:
   <<: *default
   database: academy_32_bit_test
-
- <%= ENV['DATABASE_URL'] %>
 #
 production:
   <<: *default

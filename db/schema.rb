@@ -10,10 +10,60 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_04_08_190258) do
+ActiveRecord::Schema.define(version: 2020_04_10_170946) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "answers", force: :cascade do |t|
+    t.integer "given_task_id"
+    t.datetime "date_of_answer"
+    t.string "file"
+    t.integer "state_of_cheking"
+    t.string "result"
+    t.text "result_description"
+    t.integer "teacher_mark"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "courses", force: :cascade do |t|
+    t.string "name"
+    t.text "description"
+    t.string "shortname"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "given_tasks", force: :cascade do |t|
+    t.integer "task_id"
+    t.integer "student_id"
+    t.integer "user_id"
+    t.datetime "date_of_giving"
+    t.boolean "is_auto_check"
+    t.string "type"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "groups", force: :cascade do |t|
+    t.string "name"
+    t.datetime "group_started"
+    t.datetime "group_closed"
+    t.text "schedule"
+    t.integer "course_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "pack_of_tasks", force: :cascade do |t|
+    t.integer "user_id"
+    t.datetime "date_of_creation"
+    t.string "name"
+    t.text "description"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
 
   create_table "parents", force: :cascade do |t|
     t.string "name"
@@ -21,6 +71,13 @@ ActiveRecord::Schema.define(version: 2020_04_08_190258) do
     t.string "fathername"
     t.string "phone_number"
     t.string "gender"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "student_parents", force: :cascade do |t|
+    t.integer "student_id"
+    t.integer "parent_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
@@ -61,6 +118,43 @@ ActiveRecord::Schema.define(version: 2020_04_08_190258) do
     t.index ["uid", "provider"], name: "index_students_on_uid_and_provider", unique: true
   end
 
+  create_table "students_in_groups", force: :cascade do |t|
+    t.integer "group_id"
+    t.integer "student_id"
+    t.datetime "started_group"
+    t.datetime "left_group"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "tasks", force: :cascade do |t|
+    t.integer "theme_id"
+    t.string "name"
+    t.text "description"
+    t.string "tests"
+    t.boolean "is_auto_check"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "tasks_in_packs", force: :cascade do |t|
+    t.integer "pack_of_task_id"
+    t.integer "task_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "themes", force: :cascade do |t|
+    t.integer "course_id"
+    t.string "category"
+    t.integer "order_in_category"
+    t.string "name"
+    t.text "description"
+    t.string "type"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
   create_table "users", force: :cascade do |t|
     t.string "provider", default: "login", null: false
     t.string "uid", default: "", null: false
@@ -90,4 +184,18 @@ ActiveRecord::Schema.define(version: 2020_04_08_190258) do
     t.index ["uid", "provider"], name: "index_users_on_uid_and_provider", unique: true
   end
 
+  add_foreign_key "answers", "given_tasks"
+  add_foreign_key "given_tasks", "students"
+  add_foreign_key "given_tasks", "tasks"
+  add_foreign_key "given_tasks", "users"
+  add_foreign_key "groups", "courses"
+  add_foreign_key "pack_of_tasks", "users"
+  add_foreign_key "student_parents", "parents"
+  add_foreign_key "student_parents", "students"
+  add_foreign_key "students_in_groups", "groups"
+  add_foreign_key "students_in_groups", "students"
+  add_foreign_key "tasks", "themes"
+  add_foreign_key "tasks_in_packs", "pack_of_tasks"
+  add_foreign_key "tasks_in_packs", "tasks"
+  add_foreign_key "themes", "courses"
 end

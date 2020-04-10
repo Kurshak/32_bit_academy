@@ -8,5 +8,7 @@ class Student < ActiveRecord::Base
   include DeviseTokenAuth::Concerns::User
   has_many :student_parents
   has_many :parents, through: :student_parents
+  has_many :students_in_groups
+  has_many :given_tasks
 
 end
