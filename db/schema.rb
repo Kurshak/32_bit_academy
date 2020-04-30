@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_04_10_170946) do
+ActiveRecord::Schema.define(version: 2020_04_30_181421) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -23,6 +23,17 @@ ActiveRecord::Schema.define(version: 2020_04_10_170946) do
     t.string "result"
     t.text "result_description"
     t.integer "teacher_mark"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "attendances", force: :cascade do |t|
+    t.integer "lesson_id"
+    t.integer "student_id"
+    t.boolean "is_free"
+    t.boolean "is_paid"
+    t.boolean "is_visited"
+    t.string "comment"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
@@ -56,6 +67,15 @@ ActiveRecord::Schema.define(version: 2020_04_10_170946) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
+  create_table "lessons", force: :cascade do |t|
+    t.integer "group_id"
+    t.datetime "datetime"
+    t.integer "theme_id"
+    t.string "comment"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
   create_table "pack_of_tasks", force: :cascade do |t|
     t.integer "user_id"
     t.datetime "date_of_creation"
@@ -71,6 +91,32 @@ ActiveRecord::Schema.define(version: 2020_04_10_170946) do
     t.string "fathername"
     t.string "phone_number"
     t.string "gender"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "paybacks", force: :cascade do |t|
+    t.integer "student_id"
+    t.float "amount"
+    t.datetime "date"
+    t.string "cause"
+    t.boolean "is_cash"
+    t.string "comment"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "payments", force: :cascade do |t|
+    t.integer "student_id"
+    t.integer "group_id"
+    t.float "amount"
+    t.datetime "date"
+    t.boolean "is_checked"
+    t.boolean "is_set_for_attendances"
+    t.integer "discount"
+    t.integer "num_of_lessons"
+    t.boolean "is_cash"
+    t.string "comment"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
@@ -123,6 +169,15 @@ ActiveRecord::Schema.define(version: 2020_04_10_170946) do
     t.integer "student_id"
     t.datetime "started_group"
     t.datetime "left_group"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "subthemes", force: :cascade do |t|
+    t.integer "theme_id"
+    t.integer "order_in_theme"
+    t.string "name"
+    t.text "description"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
@@ -185,15 +240,23 @@ ActiveRecord::Schema.define(version: 2020_04_10_170946) do
   end
 
   add_foreign_key "answers", "given_tasks"
+  add_foreign_key "attendances", "lessons"
+  add_foreign_key "attendances", "students"
   add_foreign_key "given_tasks", "students"
   add_foreign_key "given_tasks", "tasks"
   add_foreign_key "given_tasks", "users"
   add_foreign_key "groups", "courses"
+  add_foreign_key "lessons", "groups"
+  add_foreign_key "lessons", "themes"
   add_foreign_key "pack_of_tasks", "users"
+  add_foreign_key "paybacks", "students"
+  add_foreign_key "payments", "groups"
+  add_foreign_key "payments", "students"
   add_foreign_key "student_parents", "parents"
   add_foreign_key "student_parents", "students"
   add_foreign_key "students_in_groups", "groups"
   add_foreign_key "students_in_groups", "students"
+  add_foreign_key "subthemes", "themes"
   add_foreign_key "tasks", "themes"
   add_foreign_key "tasks_in_packs", "pack_of_tasks"
   add_foreign_key "tasks_in_packs", "tasks"

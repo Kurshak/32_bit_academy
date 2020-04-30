@@ -10,5 +10,8 @@ class Student < ActiveRecord::Base
   has_many :parents, through: :student_parents
   has_many :students_in_groups
   has_many :given_tasks
+  has_many :attendances
+  has_many :paybacks
+  has_many :payments
 
 end
