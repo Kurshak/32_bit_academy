@@ -13,12 +13,15 @@ Rails.application.routes.draw do
     namespace :v1 do
       namespace :tasks do
         resources :tasks
-        get  'get_by_course',  controller: 'get_tasks'
-        get  'get_by_theme',  controller: 'get_tasks'
-        get  'get_by_subtheme',  controller: 'get_tasks'
-        get  'get_by_student',  controller: 'get_tasks'
-        get  'get_by_group',  controller: 'get_tasks'
-        get  'get_by_pack',  controller: 'get_tasks'
+        get  'by_course', controller: 'get_tasks'
+        get  'by_theme', controller: 'get_tasks'
+        get  'by_subtheme', controller: 'get_tasks'
+        get  'by_student', controller: 'get_tasks'
+        get  'by_group', controller: 'get_tasks'
+        get  'by_pack', controller: 'get_tasks'
+      end
+      namespace :lessons do
+        resources :lessons
       end
     end
   end
