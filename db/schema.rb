@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_04_30_181421) do
+ActiveRecord::Schema.define(version: 2020_05_05_135214) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -49,12 +49,13 @@ ActiveRecord::Schema.define(version: 2020_04_30_181421) do
   create_table "given_tasks", force: :cascade do |t|
     t.integer "task_id"
     t.integer "student_id"
-    t.integer "user_id"
     t.datetime "date_of_giving"
     t.boolean "is_auto_check"
     t.string "type"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.bigint "groups_id"
+    t.index ["groups_id"], name: "index_given_tasks_on_groups_id"
   end
 
   create_table "groups", force: :cascade do |t|
@@ -65,15 +66,18 @@ ActiveRecord::Schema.define(version: 2020_04_30_181421) do
     t.integer "course_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.bigint "user_id"
+    t.index ["user_id"], name: "index_groups_on_user_id"
   end
 
   create_table "lessons", force: :cascade do |t|
     t.integer "group_id"
     t.datetime "datetime"
-    t.integer "theme_id"
     t.string "comment"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.bigint "subtheme_id"
+    t.index ["subtheme_id"], name: "index_lessons_on_subtheme_id"
   end
 
   create_table "pack_of_tasks", force: :cascade do |t|
@@ -183,13 +187,14 @@ ActiveRecord::Schema.define(version: 2020_04_30_181421) do
   end
 
   create_table "tasks", force: :cascade do |t|
-    t.integer "theme_id"
     t.string "name"
     t.text "description"
     t.string "tests"
     t.boolean "is_auto_check"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.bigint "subtheme_id"
+    t.index ["subtheme_id"], name: "index_tasks_on_subtheme_id"
   end
 
   create_table "tasks_in_packs", force: :cascade do |t|
@@ -242,12 +247,13 @@ ActiveRecord::Schema.define(version: 2020_04_30_181421) do
   add_foreign_key "answers", "given_tasks"
   add_foreign_key "attendances", "lessons"
   add_foreign_key "attendances", "students"
+  add_foreign_key "given_tasks", "groups", column: "groups_id"
   add_foreign_key "given_tasks", "students"
   add_foreign_key "given_tasks", "tasks"
-  add_foreign_key "given_tasks", "users"
   add_foreign_key "groups", "courses"
+  add_foreign_key "groups", "users"
   add_foreign_key "lessons", "groups"
-  add_foreign_key "lessons", "themes"
+  add_foreign_key "lessons", "subthemes"
   add_foreign_key "pack_of_tasks", "users"
   add_foreign_key "paybacks", "students"
   add_foreign_key "payments", "groups"
@@ -257,7 +263,7 @@ ActiveRecord::Schema.define(version: 2020_04_30_181421) do
   add_foreign_key "students_in_groups", "groups"
   add_foreign_key "students_in_groups", "students"
   add_foreign_key "subthemes", "themes"
-  add_foreign_key "tasks", "themes"
+  add_foreign_key "tasks", "subthemes"
   add_foreign_key "tasks_in_packs", "pack_of_tasks"
   add_foreign_key "tasks_in_packs", "tasks"
   add_foreign_key "themes", "courses"
