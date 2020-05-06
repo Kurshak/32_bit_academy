@@ -23,6 +23,11 @@ Rails.application.routes.draw do
       namespace :lessons do
         resources :lessons
       end
+      namespace :answers do
+        resources :answers
+        get  'by_student', controller: 'get_answers'
+        get  'by_task', controller: 'get_answers'
+      end
     end
   end
 end
