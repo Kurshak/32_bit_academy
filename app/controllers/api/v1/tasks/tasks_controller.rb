@@ -15,7 +15,7 @@ module Api
           if @task.save
             show
           else
-            render_error :bad_request, @task.errors
+            # render_error :bad_request, @task.errors
           end
         end
 
@@ -44,7 +44,7 @@ module Api
         def set_course; end
 
         def task_params
-          params.permit(:name, :description, :tests, :is_auto_check, :subtheme_id)
+          params.require(:task).permit(:name, :description, :tests, :is_auto_check, :subtheme_id)
         end
 
         def set_task

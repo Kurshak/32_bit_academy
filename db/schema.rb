@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_05_12_180543) do
+ActiveRecord::Schema.define(version: 2020_05_12_195620) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -39,13 +39,14 @@ ActiveRecord::Schema.define(version: 2020_05_12_180543) do
   create_table "answers", force: :cascade do |t|
     t.integer "given_task_id"
     t.datetime "date_of_answer"
-    t.string "file"
     t.integer "state_of_cheking"
-    t.string "result"
-    t.text "result_description"
-    t.integer "teacher_mark"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.string "code_file"
+    t.integer "automatic_evaluation"
+    t.integer "teacher_evaluation"
+    t.string "teacher_comment"
+    t.string "student_comment"
   end
 
   create_table "attendances", force: :cascade do |t|
@@ -60,12 +61,13 @@ ActiveRecord::Schema.define(version: 2020_05_12_180543) do
   end
 
   create_table "categories", force: :cascade do |t|
-    t.integer "theme_id"
-    t.integer "order_in_theme"
     t.string "name"
     t.text "description"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.bigint "course_id"
+    t.integer "order_in_cource"
+    t.index ["course_id"], name: "index_categories_on_course_id"
   end
 
   create_table "courses", force: :cascade do |t|
@@ -80,11 +82,10 @@ ActiveRecord::Schema.define(version: 2020_05_12_180543) do
     t.integer "task_id"
     t.integer "student_id"
     t.datetime "date_of_giving"
-    t.boolean "is_auto_check"
-    t.string "type"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.bigint "groups_id"
+    t.boolean "completed"
     t.index ["groups_id"], name: "index_given_tasks_on_groups_id"
   end
 
@@ -97,6 +98,7 @@ ActiveRecord::Schema.define(version: 2020_05_12_180543) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.bigint "user_id"
+    t.boolean "active"
     t.index ["user_id"], name: "index_groups_on_user_id"
   end
 
@@ -106,8 +108,8 @@ ActiveRecord::Schema.define(version: 2020_05_12_180543) do
     t.string "comment"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.bigint "subtheme_id"
-    t.index ["subtheme_id"], name: "index_lessons_on_subtheme_id"
+    t.bigint "themes_id"
+    t.index ["themes_id"], name: "index_lessons_on_themes_id"
   end
 
   create_table "pack_of_tasks", force: :cascade do |t|
@@ -122,11 +124,13 @@ ActiveRecord::Schema.define(version: 2020_05_12_180543) do
   create_table "parents", force: :cascade do |t|
     t.string "name"
     t.string "surname"
-    t.string "fathername"
-    t.string "phone_number"
     t.string "gender"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.string "fathersname"
+    t.string "mobile1"
+    t.string "mobile2"
+    t.integer "parent_type"
   end
 
   create_table "paybacks", force: :cascade do |t|
@@ -210,12 +214,12 @@ ActiveRecord::Schema.define(version: 2020_05_12_180543) do
   create_table "tasks", force: :cascade do |t|
     t.string "name"
     t.text "description"
-    t.string "tests"
     t.boolean "is_auto_check"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.bigint "subtheme_id"
-    t.index ["subtheme_id"], name: "index_tasks_on_subtheme_id"
+    t.integer "type"
+    t.bigint "themes_id"
+    t.index ["themes_id"], name: "index_tasks_on_themes_id"
   end
 
   create_table "tasks_in_packs", force: :cascade do |t|
@@ -223,6 +227,7 @@ ActiveRecord::Schema.define(version: 2020_05_12_180543) do
     t.integer "task_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.integer "order_in_pack"
   end
 
   create_table "tests", force: :cascade do |t|
@@ -233,14 +238,13 @@ ActiveRecord::Schema.define(version: 2020_05_12_180543) do
   end
 
   create_table "themes", force: :cascade do |t|
-    t.integer "course_id"
-    t.string "category"
-    t.integer "order_in_category"
     t.string "name"
     t.text "description"
-    t.string "type"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.integer "order_in_theme"
+    t.bigint "categories_id"
+    t.index ["categories_id"], name: "index_themes_on_categories_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -276,14 +280,14 @@ ActiveRecord::Schema.define(version: 2020_05_12_180543) do
   add_foreign_key "answers", "given_tasks"
   add_foreign_key "attendances", "lessons"
   add_foreign_key "attendances", "students"
-  add_foreign_key "categories", "themes"
+  add_foreign_key "categories", "courses"
   add_foreign_key "given_tasks", "groups", column: "groups_id"
   add_foreign_key "given_tasks", "students"
   add_foreign_key "given_tasks", "tasks"
   add_foreign_key "groups", "courses"
   add_foreign_key "groups", "users"
-  add_foreign_key "lessons", "categories", column: "subtheme_id"
   add_foreign_key "lessons", "groups"
+  add_foreign_key "lessons", "themes", column: "themes_id"
   add_foreign_key "pack_of_tasks", "users"
   add_foreign_key "paybacks", "students"
   add_foreign_key "payments", "groups"
@@ -292,9 +296,9 @@ ActiveRecord::Schema.define(version: 2020_05_12_180543) do
   add_foreign_key "student_parents", "students"
   add_foreign_key "students_in_groups", "groups"
   add_foreign_key "students_in_groups", "students"
-  add_foreign_key "tasks", "categories", column: "subtheme_id"
+  add_foreign_key "tasks", "themes", column: "themes_id"
   add_foreign_key "tasks_in_packs", "pack_of_tasks"
   add_foreign_key "tasks_in_packs", "tasks"
   add_foreign_key "tests", "tasks", column: "tasks_id"
-  add_foreign_key "themes", "courses"
+  add_foreign_key "themes", "categories", column: "categories_id"
 end
