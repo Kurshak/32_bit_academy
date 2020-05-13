@@ -1,4 +1,5 @@
 class Theme < ApplicationRecord
-    belongs_to :course, class_name: 'Course', foreign_key: 'course_id'
+    belongs_to :category, class_name: 'Category', foreign_key: 'categories_id'
     has_many :tasks
+    has_many :lessons
 end

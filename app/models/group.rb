@@ -4,4 +4,5 @@ class Group < ApplicationRecord
 	has_many :students_in_groups
 	has_many :lessons
 	has_many :payments
+	has_many :given_tasks
 end

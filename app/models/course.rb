@@ -1,4 +1,4 @@
 class Course < ApplicationRecord
 	has_many :groups
-	has_many :themes
+	has_many :categories
 end

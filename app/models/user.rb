@@ -7,5 +7,4 @@ class User < ActiveRecord::Base
   include DeviseTokenAuth::Concerns::User
   has_many :pack_of_tasks
   has_many :groups
-  has_many :given_tasks
 end

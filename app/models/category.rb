@@ -1,4 +1,4 @@
-class Subtheme < ApplicationRecord
-    has_many :lessons
-    belongs_to :theme, class_name: 'Theme', foreign_key: 'theme_id'
+class Category < ApplicationRecord
+    has_many :themes
+    belongs_to :course, class_name: 'Course', foreign_key: 'course_id'
 end
