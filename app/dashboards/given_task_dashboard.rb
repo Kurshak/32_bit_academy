@@ -10,7 +10,7 @@ class GivenTaskDashboard < Administrate::BaseDashboard
   ATTRIBUTE_TYPES = {
     task: Field::BelongsTo,
     student: Field::BelongsTo,
-    group: Field::BelongsTo,
+    groups: Field::BelongsTo,
     answers: Field::HasMany,
     id: Field::Number,
     date_of_giving: Field::DateTime,
@@ -28,7 +28,7 @@ class GivenTaskDashboard < Administrate::BaseDashboard
   COLLECTION_ATTRIBUTES = [
     :task,
     :student,
-    :group,
+    :groups,
     :answers,
   ].freeze
 
@@ -37,7 +37,7 @@ class GivenTaskDashboard < Administrate::BaseDashboard
   SHOW_PAGE_ATTRIBUTES = [
     :task,
     :student,
-    :group,
+    :groups,
     :answers,
     :id,
     :date_of_giving,
@@ -53,10 +53,9 @@ class GivenTaskDashboard < Administrate::BaseDashboard
   FORM_ATTRIBUTES = [
     :task,
     :student,
-    :group,
+    :groups,
     :answers,
     :date_of_giving,
-    :groups_id,
     :completed,
   ].freeze
 
