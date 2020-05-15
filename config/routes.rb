@@ -197,11 +197,13 @@ Rails.application.routes.draw do
       end
       namespace :attendances do
         get  'by_group', controller: 'get_attendances'
+        get  'by_student', controller: 'get_attendances'
       end
       namespace :students do
         resources :students
         get  'parents', controller: 'get_students'
         get  'groups', controller: 'get_students'
+        get  'residue_lesson', controller: 'get_students'
       end
       namespace :groups do
         get  'by_user', controller: 'get_groups'
