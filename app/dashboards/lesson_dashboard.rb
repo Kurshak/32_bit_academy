@@ -10,13 +10,12 @@ class LessonDashboard < Administrate::BaseDashboard
   ATTRIBUTE_TYPES = {
     attendances: Field::HasMany,
     group: Field::BelongsTo,
-    themes: Field::BelongsTo,
+    theme: Field::BelongsTo,
     id: Field::Number,
     datetime: Field::DateTime,
     comment: Field::String,
     created_at: Field::DateTime,
     updated_at: Field::DateTime,
-    themes_id: Field::Number,
   }.freeze
 
   # COLLECTION_ATTRIBUTES
@@ -27,7 +26,7 @@ class LessonDashboard < Administrate::BaseDashboard
   COLLECTION_ATTRIBUTES = [
     :attendances,
     :group,
-    :themes,
+    :theme,
     :id,
   ].freeze
 
@@ -36,7 +35,7 @@ class LessonDashboard < Administrate::BaseDashboard
   SHOW_PAGE_ATTRIBUTES = [
     :attendances,
     :group,
-    :themes,
+    :theme,
     :id,
     :datetime,
     :comment,
@@ -50,9 +49,9 @@ class LessonDashboard < Administrate::BaseDashboard
   FORM_ATTRIBUTES = [
     :attendances,
     :group,
-    :themes,
+    :theme,
     :datetime,
-    :comment
+    :comment,
   ].freeze
 
   # Overwrite this method to customize how lessons are displayed

@@ -8,7 +8,7 @@ class ThemeDashboard < Administrate::BaseDashboard
   # which determines how the attribute is displayed
   # on pages throughout the dashboard.
   ATTRIBUTE_TYPES = {
-    categories: Field::BelongsTo,
+    category: Field::BelongsTo,
     tasks: Field::HasMany,
     lessons: Field::HasMany,
     id: Field::Number,
@@ -17,7 +17,6 @@ class ThemeDashboard < Administrate::BaseDashboard
     created_at: Field::DateTime,
     updated_at: Field::DateTime,
     order_in_theme: Field::Number,
-    categories_id: Field::Number,
   }.freeze
 
   # COLLECTION_ATTRIBUTES
@@ -26,7 +25,7 @@ class ThemeDashboard < Administrate::BaseDashboard
   # By default, it's limited to four items to reduce clutter on index pages.
   # Feel free to add, remove, or rearrange items.
   COLLECTION_ATTRIBUTES = [
-    :categories,
+    :category,
     :tasks,
     :lessons,
     :id,
@@ -35,7 +34,7 @@ class ThemeDashboard < Administrate::BaseDashboard
   # SHOW_PAGE_ATTRIBUTES
   # an array of attributes that will be displayed on the model's show page.
   SHOW_PAGE_ATTRIBUTES = [
-    :categories,
+    :category,
     :tasks,
     :lessons,
     :id,
@@ -44,20 +43,18 @@ class ThemeDashboard < Administrate::BaseDashboard
     :created_at,
     :updated_at,
     :order_in_theme,
-    :categories_id,
   ].freeze
 
   # FORM_ATTRIBUTES
   # an array of attributes that will be displayed
   # on the model's form (`new` and `edit`) pages.
   FORM_ATTRIBUTES = [
-    :categories,
+    :category,
     :tasks,
     :lessons,
     :name,
     :description,
     :order_in_theme,
-    :categories_id,
   ].freeze
 
   # Overwrite this method to customize how themes are displayed

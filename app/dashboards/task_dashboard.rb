@@ -8,7 +8,7 @@ class TaskDashboard < Administrate::BaseDashboard
   # which determines how the attribute is displayed
   # on pages throughout the dashboard.
   ATTRIBUTE_TYPES = {
-    themes: Field::BelongsTo,
+    theme: Field::BelongsTo,
     tasks_in_packs: Field::HasMany,
     given_tasks: Field::HasMany,
     tests: Field::HasMany,
@@ -18,8 +18,7 @@ class TaskDashboard < Administrate::BaseDashboard
     is_auto_check: Field::Boolean,
     created_at: Field::DateTime,
     updated_at: Field::DateTime,
-    type: Field::Number,
-    themes_id: Field::Number,
+    task_type: Field::Number,
   }.freeze
 
   # COLLECTION_ATTRIBUTES
@@ -28,7 +27,7 @@ class TaskDashboard < Administrate::BaseDashboard
   # By default, it's limited to four items to reduce clutter on index pages.
   # Feel free to add, remove, or rearrange items.
   COLLECTION_ATTRIBUTES = [
-    :themes,
+    :theme,
     :tasks_in_packs,
     :given_tasks,
     :tests,
@@ -37,7 +36,7 @@ class TaskDashboard < Administrate::BaseDashboard
   # SHOW_PAGE_ATTRIBUTES
   # an array of attributes that will be displayed on the model's show page.
   SHOW_PAGE_ATTRIBUTES = [
-    :themes,
+    :theme,
     :tasks_in_packs,
     :given_tasks,
     :tests,
@@ -47,23 +46,21 @@ class TaskDashboard < Administrate::BaseDashboard
     :is_auto_check,
     :created_at,
     :updated_at,
-    :type,
-    :themes_id,
+    :task_type,
   ].freeze
 
   # FORM_ATTRIBUTES
   # an array of attributes that will be displayed
   # on the model's form (`new` and `edit`) pages.
   FORM_ATTRIBUTES = [
-    :themes,
+    :theme,
     :tasks_in_packs,
     :given_tasks,
     :tests,
     :name,
     :description,
     :is_auto_check,
-    :type,
-    :themes_id,
+    :task_type,
   ].freeze
 
   # Overwrite this method to customize how tasks are displayed

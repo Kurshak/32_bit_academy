@@ -47,3 +47,5 @@ end
 gem 'tzinfo-data', platforms: %i[mingw mswin x64_mingw jruby]
 
 gem 'administrate', github: 'hayesr/administrate', branch: 'rails5_compat'
+
+gem 'railroady'

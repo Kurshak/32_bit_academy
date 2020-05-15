@@ -5,36 +5,39 @@ module Api
     module Tasks
       class GetTasksController < ApplicationController
         def by_course
-          groups = Course.find_by_id(params[:course_id]).groups
-          @tasks = Task.where(group_id: groups.ids)
+          categories = Category.where(course_id: params[:course_id])
+          themes = Theme.where(category_id: categories.ids)
+          @tasks = Task.where(theme_id: themes.ids)
+          render json: @tasks.to_json
+        end
+
+        def by_category
+          themes = Theme.where(category_id: params[:category_id])
+          @tasks = Task.where(theme_id: themes.ids)
           render json: @tasks.to_json
         end
 
         def by_theme
-          subthemes = Theme.find_by_id(params[:theme_id]).subtheme
-          @tasks = Task.where(subtheme_id: subthemes.ids)
-          render json: @tasks.to_json
-        end
-
-        def by_subtheme
-          @tasks = Task.where(subtheme_id: params[:subtheme_id])
+          @tasks = Task.where(theme_id: params[:theme_id])
           render json: @tasks.to_json
         end
 
         def by_student
-          @tasks = Task.where(user_id: params[:user_id], group_id: params[:user_id])
-          render json: @task.to_json
+          tasks_ids = GivenTask.select(:task_id).where(student_id: params[:student_id])
+          @tasks = Task.where(id: tasks_ids)
+          render json: @tasks.to_json
         end
 
         def by_group
-          @tasks = Task.where(group_id: params[:user_id])
-          render json: @task.to_json
+          tasks_ids = GivenTask.select(:task_id).where(group_id: params[:group_id])
+          @tasks = Task.where(id: tasks_ids)
+          render json: @tasks.to_json
         end
 
         def by_pack
-          pack = PackOfTask.find_by_id(params[:pack_id])
-          @tasks = pack.tasks
-          render json: @task.to_json
+          tasks_ids = TasksInPack.select(:task_id).where(pack_of_task_id: params[:pack_of_task_id])
+          @tasks = Task.where(id: tasks_ids)
+          render json: @tasks.to_json
         end
       end
     end

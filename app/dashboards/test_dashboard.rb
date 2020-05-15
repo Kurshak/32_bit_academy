@@ -12,7 +12,7 @@ class TestDashboard < Administrate::BaseDashboard
     input_blob: Field::HasOne,
     output_attachment: Field::HasOne,
     output_blob: Field::HasOne,
-    tasks: Field::BelongsTo,
+    task: Field::BelongsTo,
     id: Field::Number,
     created_at: Field::DateTime,
     updated_at: Field::DateTime,
@@ -37,7 +37,7 @@ class TestDashboard < Administrate::BaseDashboard
     :input_blob,
     :output_attachment,
     :output_blob,
-    :tasks,
+    :task,
     :id,
     :created_at,
     :updated_at,
@@ -51,7 +51,7 @@ class TestDashboard < Administrate::BaseDashboard
     :input_blob,
     :output_attachment,
     :output_blob,
-    :tasks,
+    :task,
   ].freeze
 
   # Overwrite this method to customize how tests are displayed

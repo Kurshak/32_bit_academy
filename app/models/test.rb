@@ -3,5 +3,5 @@
 class Test < ApplicationRecord
   has_one_attached :input
   has_one_attached :output
-  belongs_to :tasks, class_name: 'Task', foreign_key: 'tasks_id'
+  belongs_to :task, class_name: 'Task', foreign_key: 'task_id'
 end

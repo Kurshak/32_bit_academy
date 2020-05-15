@@ -172,7 +172,7 @@ Rails.application.routes.draw do
         resources :tasks
         get  'by_course', controller: 'get_tasks'
         get  'by_theme', controller: 'get_tasks'
-        get  'by_subtheme', controller: 'get_tasks'
+        get  'by_category', controller: 'get_tasks'
         get  'by_student', controller: 'get_tasks'
         get  'by_group', controller: 'get_tasks'
         get  'by_pack', controller: 'get_tasks'
@@ -184,6 +184,27 @@ Rails.application.routes.draw do
         resources :answers
         get  'by_student', controller: 'get_answers'
         get  'by_task', controller: 'get_answers'
+      end
+      namespace :courses do
+        resources :courses
+        
+      end
+      namespace :categories do
+        get  'by_course', controller: 'get_categories'
+      end
+      namespace :themes do
+        get  'by_category', controller: 'get_themes'
+      end
+      namespace :attendances do
+        get  'by_group', controller: 'get_attendances'
+      end
+      namespace :students do
+        resources :students
+        get  'parents', controller: 'get_students'
+        get  'groups', controller: 'get_students'
+      end
+      namespace :groups do
+        get  'by_user', controller: 'get_groups'
       end
     end
   end
