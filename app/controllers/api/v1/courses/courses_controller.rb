@@ -42,7 +42,7 @@ module Api
           private
   
           def course_params
-            params.permit(:name, :description, :shortname)
+            params.require(:course).permit(:name, :description, :shortname)
           end
   
           def set_course

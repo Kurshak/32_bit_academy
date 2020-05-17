@@ -42,7 +42,7 @@ module Api
         private
 
         def answer_params
-          params.permit(:given_task_id, :date_of_answer, :file, :state_of_cheking, :result, :result_description, :teacher_mark)
+          params.require(:answer).permit(:given_task_id, :date_of_answer, :code_file, :state_of_cheking, :automatic_evaluation, :teacher_evaluation, :teacher_comment, :student_comment)
         end
 
         def set_answer

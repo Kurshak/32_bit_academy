@@ -11,38 +11,38 @@ module Api
         end
 
         def create
-          @leson = Lesson.new(leson_params)
-          if @leson.save
+          @lesson = Lesson.new(lesson_params)
+          if @lesson.save
             show
           else
-            render_error :bad_request, @leson.errors
+            render_error :bad_request, @lesson.errors
           end
         end
 
         def show
-          render json: @leson.to_json
+          render json: @lesson.to_json
         end
 
         def update
-          if @leson.update(leson_params)
+          if @lesson.update(lesson_params)
             show
           else
-            render_error :bad_request, @leson.errors
+            render_error :bad_request, @lesson.errors
           end
         end
 
         def destroy
-          if @leson.destroy
+          if @lesson.destroy
             render json: :ok, status: :ok
           else
-            render_error :bad_request, @leson.errors
+            render_error :bad_request, @lesson.errors
           end
         end
 
         private
 
-        def leson_params
-          params.permit(:group_id, :datetime, :comment, :subtheme_id)
+        def lesson_params
+          params.require(:lesson).permit(:group_id, :datetime, :comment, :theme_id)
         end
 
         def set_lesson

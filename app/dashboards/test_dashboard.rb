@@ -8,10 +8,10 @@ class TestDashboard < Administrate::BaseDashboard
   # which determines how the attribute is displayed
   # on pages throughout the dashboard.
   ATTRIBUTE_TYPES = {
-    input_attachment: Field::HasOne,
-    input_blob: Field::HasOne,
-    output_attachment: Field::HasOne,
-    output_blob: Field::HasOne,
+    input_attachment: Field::ActiveStorage,
+    input_blob: Field::Text,
+    output_attachment: Field::ActiveStorage,
+    output_blob: Field::Text,
     task: Field::BelongsTo,
     id: Field::Number,
     created_at: Field::DateTime,

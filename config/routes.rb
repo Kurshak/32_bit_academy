@@ -196,6 +196,7 @@ Rails.application.routes.draw do
         get  'by_category', controller: 'get_themes'
       end
       namespace :attendances do
+        resources :attendances
         get  'by_group', controller: 'get_attendances'
         get  'by_student', controller: 'get_attendances'
       end
@@ -207,6 +208,10 @@ Rails.application.routes.draw do
       end
       namespace :groups do
         get  'by_user', controller: 'get_groups'
+      end
+      namespace :pack_of_tasks do
+        resources :pack_of_tasks
+        get  'by_theme', controller: 'get_pack_of_tasks'
       end
     end
   end
