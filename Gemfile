@@ -51,4 +51,5 @@ gem 'administrate', github: 'hayesr/administrate', branch: 'rails5_compat'
 gem 'railroady'
 
 gem 'administrate-field-active_storage'
+gem 'mini_magick'
 gem  "image_processing"
