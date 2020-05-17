@@ -3,7 +3,7 @@
 module Api
   module V1
     module PackOfTasks
-      class GetGroupsController < ApplicationController
+      class GetPackOfTasksController < ApplicationController
         def by_theme
           tasks_id = Theme.where(id: params[:theme_id]).tasks.ids
           @packs_of_task = PackOfTask.where(task_id: tasks_id)
