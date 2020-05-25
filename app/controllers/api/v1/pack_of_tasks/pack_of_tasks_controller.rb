@@ -7,7 +7,14 @@ module Api
           before_action :set_pack_of_task, only: %i[show update destroy]
   
           def index
-            render json: PackOfTask.all.to_json
+            all_pack = PackOfTask.all
+            all_pack.map { |pack|
+              task_ids = TasksInPack.select(:task_id).where(pack_of_task_id: pack.id)
+              tasks = Task.where(id: task_ids)
+              pack.tasks = tasks
+            }
+            json_string = PackOfTaskSerializer.new(all_pack).serialized_json
+            render json: json_string
           end
   
           def create
@@ -24,7 +31,12 @@ module Api
           end
   
           def show
-            render json: @pack_of_task.to_json
+            task_ids = TasksInPack.select(:task_id).where(pack_of_task_id: @pack_of_task.id)
+            tasks = Task.where(id: task_ids)
+            #tasks = TasksInPack.where(pack_of_task_id: @pack_of_task.id).tasks
+            @pack_of_task.tasks = tasks
+            @json_string = PackOfTaskSerializer.new(@pack_of_task).serialized_json
+            render json: @json_string
           end
   
           def update

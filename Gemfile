@@ -52,3 +52,5 @@ gem 'railroady'
 
 gem 'administrate-field-active_storage'
 gem  "image_processing"
+
+gem 'fast_jsonapi'

@@ -212,6 +212,7 @@ Rails.application.routes.draw do
       namespace :pack_of_tasks do
         resources :pack_of_tasks
         get  'by_theme', controller: 'get_pack_of_tasks'
+        get  'by_course', controller: 'get_pack_of_tasks'
       end
     end
   end

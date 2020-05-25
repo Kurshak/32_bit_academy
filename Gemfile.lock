@@ -107,6 +107,8 @@ GEM
       rails (>= 4.2.0, < 6.1)
     erubi (1.9.0)
     execjs (2.7.0)
+    fast_jsonapi (1.5)
+      activesupport (>= 4.2)
     ffi (1.12.2)
     ffi (1.12.2-java)
     ffi (1.12.2-x64-mingw32)
@@ -274,6 +276,7 @@ DEPENDENCIES
   byebug
   devise
   devise_token_auth
+  fast_jsonapi
   figaro
   image_processing
   listen (>= 3.0.5, < 3.2)
