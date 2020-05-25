@@ -1,4 +1,6 @@
-require "administrate/base_dashboard"
+# frozen_string_literal: true
+
+require 'administrate/base_dashboard'
 
 class TestDashboard < Administrate::BaseDashboard
   # ATTRIBUTE_TYPES
@@ -8,14 +10,12 @@ class TestDashboard < Administrate::BaseDashboard
   # which determines how the attribute is displayed
   # on pages throughout the dashboard.
   ATTRIBUTE_TYPES = {
-    input_attachment: Field::ActiveStorage,
-    input_blob: Field::Text,
-    output_attachment: Field::ActiveStorage,
-    output_blob: Field::Text,
+    input: Field::ActiveStorage,
+    output: Field::ActiveStorage,
     task: Field::BelongsTo,
     id: Field::Number,
     created_at: Field::DateTime,
-    updated_at: Field::DateTime,
+    updated_at: Field::DateTime
   }.freeze
 
   # COLLECTION_ATTRIBUTES
@@ -23,35 +23,31 @@ class TestDashboard < Administrate::BaseDashboard
   #
   # By default, it's limited to four items to reduce clutter on index pages.
   # Feel free to add, remove, or rearrange items.
-  COLLECTION_ATTRIBUTES = [
-    :input_attachment,
-    :input_blob,
-    :output_attachment,
-    :output_blob,
-  ].freeze
+  COLLECTION_ATTRIBUTES = %i[
+    input
+    output
+    ].freeze
 
   # SHOW_PAGE_ATTRIBUTES
   # an array of attributes that will be displayed on the model's show page.
-  SHOW_PAGE_ATTRIBUTES = [
-    :input_attachment,
-    :input_blob,
-    :output_attachment,
-    :output_blob,
-    :task,
-    :id,
-    :created_at,
-    :updated_at,
+  SHOW_PAGE_ATTRIBUTES = %i[
+    input
+
+    output
+
+    task
+    id
+    created_at
+    updated_at
   ].freeze
 
   # FORM_ATTRIBUTES
   # an array of attributes that will be displayed
   # on the model's form (`new` and `edit`) pages.
-  FORM_ATTRIBUTES = [
-    :input_attachment,
-    :input_blob,
-    :output_attachment,
-    :output_blob,
-    :task,
+  FORM_ATTRIBUTES = %i[
+    input
+    output
+    task
   ].freeze
 
   # Overwrite this method to customize how tests are displayed
