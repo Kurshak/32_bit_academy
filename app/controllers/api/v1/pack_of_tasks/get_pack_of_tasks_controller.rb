@@ -20,6 +20,11 @@ module Api
               @pack_of_task = PackOfTask.where(id: pack_of_task_ids)
               render json: @pack_of_task.to_json
             end
+
+            def by_name
+              @pack_of_task = PackOfTask.where('name like ?', params[:name])
+              render json: @pack_of_task.to_json
+            end
         end
       end
     end

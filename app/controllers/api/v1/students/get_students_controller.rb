@@ -19,7 +19,7 @@ module Api
             def residue_lesson
               groups_ids = StudentsInGroup.select(:group_id).where(student_id: params[:student_id])
               groups = Group.where(id: groups_ids)
-              @lessons = Lesson.where('group_id = ? AND datetime > ?', groups.ids, Date.today)
+              @lessons = Lesson.where('group_id = ? AND datetime >= ?', groups.ids, Date.today)
               render json: @lessons.to_json
             end
         end

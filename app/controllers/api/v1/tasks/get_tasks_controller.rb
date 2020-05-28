@@ -39,6 +39,11 @@ module Api
           @tasks = Task.where(id: tasks_ids)
           render json: @tasks.to_json
         end
+
+        def by_name
+          @tasks = Task.where('name like ?', params[:name])
+          render json: @tasks.to_json
+        end
       end
     end
   end

@@ -176,6 +176,7 @@ Rails.application.routes.draw do
         get  'by_student', controller: 'get_tasks'
         get  'by_group', controller: 'get_tasks'
         get  'by_pack', controller: 'get_tasks'
+        get  'by_name', controller: 'get_tasks'
       end
       namespace :lessons do
         resources :lessons
@@ -213,6 +214,7 @@ Rails.application.routes.draw do
         resources :pack_of_tasks
         get  'by_theme', controller: 'get_pack_of_tasks'
         get  'by_course', controller: 'get_pack_of_tasks'
+        get  'by_name', controller: 'get_pack_of_tasks'
       end
     end
   end
