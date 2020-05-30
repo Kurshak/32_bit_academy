@@ -13,10 +13,10 @@ class AttendanceDashboard < Administrate::BaseDashboard
     id: Field::Number,
     is_free: Field::Boolean,
     is_paid: Field::Boolean,
-    is_visited: Field::Boolean,
     comment: Field::String,
     created_at: Field::DateTime,
     updated_at: Field::DateTime,
+    is_visited: Field::Number,
   }.freeze
 
   # COLLECTION_ATTRIBUTES
@@ -39,10 +39,10 @@ class AttendanceDashboard < Administrate::BaseDashboard
     :id,
     :is_free,
     :is_paid,
-    :is_visited,
     :comment,
     :created_at,
     :updated_at,
+    :is_visited,
   ].freeze
 
   # FORM_ATTRIBUTES
@@ -53,8 +53,8 @@ class AttendanceDashboard < Administrate::BaseDashboard
     :student,
     :is_free,
     :is_paid,
-    :is_visited,
     :comment,
+    :is_visited,
   ].freeze
 
   # Overwrite this method to customize how attendances are displayed

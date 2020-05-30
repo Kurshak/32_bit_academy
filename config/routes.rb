@@ -211,6 +211,7 @@ Rails.application.routes.draw do
       end
       namespace :groups do
         get  'by_user', controller: 'get_groups'
+        get  'students', controller: 'get_groups'
       end
       namespace :pack_of_tasks do
         resources :pack_of_tasks
