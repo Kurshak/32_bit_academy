@@ -13,7 +13,7 @@ module Api
             tasks = Task.where(id: task_ids)
             pack.tasks = tasks
           }
-          json_string = PackOfTaskSerializer.new(all_pack).serialized_json
+          json_string = PackOfTaskSerializer.new(all_pack).to_h
           render json: json_string
         end
 
@@ -34,7 +34,7 @@ module Api
           task_ids = TasksInPack.select(:task_id).where(pack_of_task_id: @pack_of_task.id)
           tasks = Task.where(id: task_ids)
           @pack_of_task.tasks = tasks
-          @json_string = PackOfTaskSerializer.new(@pack_of_task).serialized_json
+          @json_string = PackOfTaskSerializer.new(@pack_of_task).to_h
           render json: @json_string
         end
 

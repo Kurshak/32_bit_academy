@@ -206,6 +206,8 @@ Rails.application.routes.draw do
         get  'parents', controller: 'get_students'
         get  'groups', controller: 'get_students'
         get  'residue_lesson', controller: 'get_students'
+        get  'passed_themes', controller: 'get_students'
+        get  'completed_given_task', controller: 'get_students'
       end
       namespace :groups do
         get  'by_user', controller: 'get_groups'
@@ -213,6 +215,7 @@ Rails.application.routes.draw do
       namespace :pack_of_tasks do
         resources :pack_of_tasks
         get  'by_theme', controller: 'get_pack_of_tasks'
+        get  'by_categories', controller: 'get_pack_of_tasks'
         get  'by_course', controller: 'get_pack_of_tasks'
         get  'by_name', controller: 'get_pack_of_tasks'
       end

@@ -15,8 +15,8 @@ class AnswerDashboard < Administrate::BaseDashboard
     created_at: Field::DateTime,
     updated_at: Field::DateTime,
     code_file: Field::String,
-    automatic_evaluation: Field::Number,
-    teacher_evaluation: Field::Number,
+    automatic_evaluation: Field::String,
+    teacher_evaluation: Field::String,
     teacher_comment: Field::String,
     student_comment: Field::String,
   }.freeze

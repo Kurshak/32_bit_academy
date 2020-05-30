@@ -17,10 +17,70 @@ module Api
             end
 
             def residue_lesson
-              groups_ids = StudentsInGroup.select(:group_id).where(student_id: params[:student_id])
-              groups = Group.where(id: groups_ids)
-              @lessons = Lesson.where('group_id = ? AND datetime >= ?', groups.ids, Date.today)
-              render json: @lessons.to_json
+              lesson_ids = Lesson.select(:id).where(group_id: params[:group_id])
+              visited_count = Attendance.where(lesson_id: lesson_ids, student_id: params[:student_id], is_visited: true, is_paid: true).count
+              payments = Payment.where(student_id: params[:student_id], group_id: params[:group_id])
+              payments_count = 0
+              payments.map { |payment|
+                payments_count += payment.num_of_lessons
+              }
+              paybacks = Payback.where(student_id: params[:student_id], group_id: params[:group_id])
+              payback_count = 0
+              paybacks.map { |payback|
+                payback_count += payback.num_of_lessons_back
+              }
+              @residue_count = payments_count - payback_count - visited_count
+              render json: @residue_count.to_json
+            end
+
+            def passed_themes
+              lesson_ids = Attendance.select(:lesson_id).where(student_id: params[:student_id], is_visited: true)
+              theme_ids = Lesson.select(:theme_id).where(id: lesson_ids)
+              category_ids = Theme.select(:category_id).where(id: theme_ids)
+              course_ids = Category.select(:course_id).where(id: category_ids)
+
+              themes = Theme.where(id: theme_ids)
+              categories = Category.where(id: category_ids)
+              courses = Course.where(id: course_ids)
+
+              courses.map{ |course|
+                this_categories_ids = []
+                categories.map{ |category|
+                  this_themes_ids = []
+
+                  themes.map{ |theme|
+                    if category.id == theme.category_id
+                      this_themes_ids << theme.id
+                    end
+                  }
+
+                  this_themes = Theme.where(id: this_themes_ids).order(:order_in_theme)
+                  category.themes = this_themes
+
+                  if course.id == category.course_id
+                    this_categories_ids << category.id
+                  end
+                }
+
+                this_categories = Category.where(id: this_categories_ids).order(:order_in_cource)
+                course.categories = this_categories
+              }
+
+              json_string = CourseWithCategoriesAndThemesSerializer.new(courses).to_h
+              #json_string = CategoryWithThemesSerializer.new(categories).serialized_json
+              render json: json_string
+            end
+
+            def completed_given_task
+              group_ids = GivenTask.select(:group_id).where(student_id: params[:student_id])
+              groups = Group.where(id: group_ids)
+              groups.map{ |group|
+                group.task_count = GivenTask.where(student_id: params[:student_id], group_id: group.id).count
+                group.completed_task_count = GivenTask.where(student_id: params[:student_id], group_id: group.id, completed: true).count
+                group.uncompleted_task_count = GivenTask.where(student_id: params[:student_id], group_id: group.id, completed: false).count
+              }
+              json_string = GroupWithCompletedTasksSerializer.new(groups).to_h
+              render json: json_string
             end
         end
       end

@@ -4,5 +4,8 @@ class Group < ApplicationRecord
 	has_many :students_in_groups
 	has_many :lessons
 	has_many :payments
+	has_many :paybacks
 	has_many :given_tasks
+
+	attr_accessor :task_count, :completed_task_count, :uncompleted_task_count
 end

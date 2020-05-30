@@ -1,5 +1,4 @@
-class PackOfTaskSerializer
-  include FastJsonapi::ObjectSerializer
+class GroupWithCompletedTasksSerializer
 
   def to_h
     data = serializable_hash
@@ -18,9 +17,6 @@ class PackOfTaskSerializer
     end
   end
 
-  set_type :pack_of_task
-  attributes :id, :user_id, :date_of_creation, :name, :description
-  attribute :tasks do |object|
-    object.tasks.as_json
-  end
+  include FastJsonapi::ObjectSerializer
+  attributes :user_id, :course_id, :name, :group_started, :group_closed, :schedule, :active, :task_count, :completed_task_count, :uncompleted_task_count
 end

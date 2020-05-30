@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_05_15_165843) do
+ActiveRecord::Schema.define(version: 2020_05_30_000020) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -43,8 +43,8 @@ ActiveRecord::Schema.define(version: 2020_05_15_165843) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.string "code_file"
-    t.integer "automatic_evaluation"
-    t.integer "teacher_evaluation"
+    t.string "automatic_evaluation"
+    t.string "teacher_evaluation"
     t.string "teacher_comment"
     t.string "student_comment"
   end
@@ -140,6 +140,8 @@ ActiveRecord::Schema.define(version: 2020_05_15_165843) do
     t.string "comment"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.integer "num_of_lessons_back"
+    t.integer "group_id"
   end
 
   create_table "payments", force: :cascade do |t|
@@ -284,6 +286,7 @@ ActiveRecord::Schema.define(version: 2020_05_15_165843) do
   add_foreign_key "lessons", "groups"
   add_foreign_key "lessons", "themes"
   add_foreign_key "pack_of_tasks", "users"
+  add_foreign_key "paybacks", "groups"
   add_foreign_key "paybacks", "students"
   add_foreign_key "payments", "groups"
   add_foreign_key "payments", "students"

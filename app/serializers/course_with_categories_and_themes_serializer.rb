@@ -1,4 +1,4 @@
-class PackOfTaskSerializer
+class CourseWithCategoriesAndThemesSerializer
   include FastJsonapi::ObjectSerializer
 
   def to_h
@@ -18,9 +18,9 @@ class PackOfTaskSerializer
     end
   end
 
-  set_type :pack_of_task
-  attributes :id, :user_id, :date_of_creation, :name, :description
-  attribute :tasks do |object|
-    object.tasks.as_json
+  set_type :course
+  attributes :id, :name, :description, :shortname
+  attribute :categories do |object|
+    CategoryWithThemesSerializer.new(object.categories).to_h
   end
 end
