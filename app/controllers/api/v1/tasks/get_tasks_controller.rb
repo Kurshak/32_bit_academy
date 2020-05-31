@@ -35,7 +35,7 @@ module Api
         end
 
         def by_pack
-          tasks_ids = TasksInPack.select(:task_id).where(pack_of_task_id: params[:pack_of_task_id])
+          tasks_ids = TasksInPack.select(:task_id).where(pack_of_task_id: params[:pack_of_task_id]).order(:order_in_pack)
           @tasks = Task.where(id: tasks_ids)
           render json: @tasks.to_json
         end

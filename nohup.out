@@ -1,0 +1,43 @@
+sh: 1: cannot create ./temp/compile_result.log: Directory nonexistent
+rm: cannot remove './temp/*': No such file or directory
+200 OK
+sh: 1: cannot create ./temp/compile_result.log: Directory nonexistent
+rm: cannot remove './temp/*': No such file or directory
+200 OK
+"ok"
+200 OK
+200 OK
+sh: 1: cannot create ./temp/compile_result.log: Directory nonexistent
+rm: cannot remove './temp/*': No such file or directory
+200 OK
+"ok"
+200 OK
+200 OK
+Input a: 120
+Input b: 130
+a: 120
+b: 130
+c: 250
+Input a: 43
+Input b: 57
+a: 43
+b: 57
+c: 100
+Input a: 5
+Input b: 29
+a: 5
+b: 29
+c: 34
+Input a: 18
+Input b: 22
+a: 18
+b: 22
+c: 40
+Input a: 16
+Input b: 24
+a: 16
+b: 24
+c: 40
+200 OK
+"ok"
+200 OK

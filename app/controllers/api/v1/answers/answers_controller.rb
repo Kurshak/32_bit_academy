@@ -13,9 +13,13 @@ module Api
         def create
           @answer = Answer.new(answer_params)
           if @answer.save
-            pidof = %x(pidof testing_app)
-            if pidof.empty?
-              Thread.new { system("../testing_app/testing_app") }
+            task_id = GivenTask.select(:task_id).where(id: params[:given_task_id])
+            task = Task.where(id: task_id).first
+            if task.is_auto_check?
+              pidof = %x(pidof testing_app)
+              if pidof.empty?
+                Thread.new { system("/home/asus/diplom/testing_app/testing_app") }
+              end
             end
             show
           else
