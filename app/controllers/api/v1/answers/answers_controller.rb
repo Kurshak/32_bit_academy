@@ -13,6 +13,10 @@ module Api
         def create
           @answer = Answer.new(answer_params)
           if @answer.save
+            pidof = %x(pidof testing_app)
+            if pidof.empty?
+              Thread.new { system("../testing_app/testing_app") }
+            end
             show
           else
             render_error :bad_request, @answer.errors

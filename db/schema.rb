@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_05_30_171925) do
+ActiveRecord::Schema.define(version: 2020_05_31_134453) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -155,6 +155,12 @@ ActiveRecord::Schema.define(version: 2020_05_30_171925) do
     t.integer "num_of_lessons"
     t.boolean "is_cash"
     t.string "comment"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "processing_answers", force: :cascade do |t|
+    t.string "pathToAnswer"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end

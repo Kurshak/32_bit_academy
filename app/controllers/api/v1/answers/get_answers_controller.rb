@@ -15,6 +15,27 @@ module Api
           @answers = Answer.where(given_task_id: given_tasks.ids)
           render json: @answers.to_json
         end
+
+        def processing_answer
+          answer = Answer.where(state_of_cheking: 0).first
+          task_id = GivenTask.select(:task_id).where(id: answer.given_task_id)
+          tests = Test.where(task_id: task_id)
+          proc_ans = ProcessingAnswer.new
+          proc_ans.pathToAnswer = answer.code_file
+          proc_ans.tests = tests
+          answer.state_of_cheking = 1
+          answer.save
+          json_string = ProcessingAnswerSerializer.new(proc_ans).to_h
+          render json: json_string
+        end
+
+        def post_test_result
+          answer = Answer.where(state_of_cheking: 1).first
+          answer.automatic_evaluation = params[:json_result]
+          answer.state_of_cheking = 2
+          answer.save
+          render json: :ok, status: :ok
+        end
       end
     end
   end

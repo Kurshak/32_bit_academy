@@ -185,6 +185,8 @@ Rails.application.routes.draw do
         resources :answers
         get  'by_student', controller: 'get_answers'
         get  'by_task', controller: 'get_answers'
+        get  'processing_answer', controller: 'get_answers'
+        post 'post_test_result', controller: 'get_answers'
       end
       namespace :courses do
         resources :courses
