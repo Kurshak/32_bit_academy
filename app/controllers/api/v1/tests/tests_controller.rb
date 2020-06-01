@@ -44,7 +44,7 @@ module Api
           def set_course; end
   
           def test_params
-            params.require(:test).permit(:name, :description, :is_auto_check, :test_type, :theme_id)
+            params.require(:test).permit(:task_id, :order_in_task, :input, :output)
           end
   
           def set_test

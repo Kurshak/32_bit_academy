@@ -225,6 +225,10 @@ Rails.application.routes.draw do
       namespace :given_tasks do
         resources :given_tasks
       end
+      namespace :tests do
+        resources :tests
+        put 'change_order', controller: 'put_tests'
+      end
     end
   end
 end

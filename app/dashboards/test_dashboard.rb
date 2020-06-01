@@ -13,6 +13,7 @@ class TestDashboard < Administrate::BaseDashboard
     input: Field::ActiveStorage,
     output: Field::ActiveStorage,
     task: Field::BelongsTo,
+    order_in_task: Field::Number,
     id: Field::Number,
     created_at: Field::DateTime,
     updated_at: Field::DateTime
@@ -37,6 +38,7 @@ class TestDashboard < Administrate::BaseDashboard
 
     task
     id
+    order_in_task
     created_at
     updated_at
   ].freeze
@@ -48,6 +50,7 @@ class TestDashboard < Administrate::BaseDashboard
     input
     output
     task
+    order_in_task
   ].freeze
 
   # Overwrite this method to customize how tests are displayed
