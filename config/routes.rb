@@ -190,7 +190,7 @@ Rails.application.routes.draw do
       end
       namespace :courses do
         resources :courses
-        
+        get  'all_courses', controller: 'get_courses'
       end
       namespace :categories do
         get  'by_course', controller: 'get_categories'
@@ -221,6 +221,9 @@ Rails.application.routes.draw do
         get  'by_categories', controller: 'get_pack_of_tasks'
         get  'by_course', controller: 'get_pack_of_tasks'
         get  'by_name', controller: 'get_pack_of_tasks'
+      end
+      namespace :given_tasks do
+        resources :given_tasks
       end
     end
   end
