@@ -14,4 +14,5 @@ class Student < ActiveRecord::Base
   has_many :paybacks
   has_many :payments
 
+  attr_accessor :uncompleted_task_count, :unchecked_answers_count
 end

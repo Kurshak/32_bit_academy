@@ -1,4 +1,5 @@
-class GroupWithCompletedTasksSerializer
+class GroupsWithStudetsSerializer
+  include FastJsonapi::ObjectSerializer
 
   def to_h
     data = serializable_hash
@@ -17,6 +18,9 @@ class GroupWithCompletedTasksSerializer
     end
   end
 
-  include FastJsonapi::ObjectSerializer
-  attributes :id, :user_id, :course_id, :name, :group_started, :group_closed, :schedule, :active, :task_count, :completed_task_count, :uncompleted_task_count
+  attributes :id, :user_id, :course_id, :name, :group_started, :group_closed, :schedule, :active
+
+  attribute :students do |object|
+    StudentSerializer.new(object.students).to_h
+  end
 end

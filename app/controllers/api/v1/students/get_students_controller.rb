@@ -82,6 +82,17 @@ module Api
               json_string = GroupWithCompletedTasksSerializer.new(groups).to_h
               render json: json_string
             end
+
+            def tasks
+              given_tasks = GivenTask.where(student_id: params[:student_id])
+              given_tasks.map{|given_task|
+                task = Task.where(id: given_task.task_id).first
+                given_task.name = task.name
+                given_task.answers_count = Answer.where(given_task_id: given_task.id).count
+                given_task.unchecked_answers_count = Answer.where(given_task_id: given_task.id, teacher_evaluation: "false").count
+              }
+              render json: StudentGivenTaskSerializer.new(given_tasks).to_h
+            end
         end
       end
     end

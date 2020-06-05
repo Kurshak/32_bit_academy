@@ -210,10 +210,12 @@ Rails.application.routes.draw do
         get  'residue_lesson', controller: 'get_students'
         get  'passed_themes', controller: 'get_students'
         get  'completed_given_task', controller: 'get_students'
+        get  'tasks', controller: 'get_students'
       end
       namespace :groups do
         get  'by_user', controller: 'get_groups'
         get  'students', controller: 'get_groups'
+        get  'completed_tasks', controller: 'get_groups'
       end
       namespace :pack_of_tasks do
         resources :pack_of_tasks
