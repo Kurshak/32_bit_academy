@@ -4,5 +4,5 @@ class ThemesSerializer
   include FastJsonapi::ObjectSerializer
 
   set_type :theme
-  attributes :name, :description, :id, :order_in_cource
+  attributes :name, :description, :id, :category_id, :order_in_theme
 end
