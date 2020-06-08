@@ -6,7 +6,7 @@ module Api
       class GetCoursesController < ApplicationController
         def all_courses
           courses = Course.all
-          render json: CourseWithCategoriesAndThemesSerializer.new(courses).to_h
+          render json: CourseWithCategoriesAndThemesSerializer.new(courses)
         end
       end
     end
