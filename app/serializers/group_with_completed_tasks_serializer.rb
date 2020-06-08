@@ -1,5 +1,6 @@
-class GroupWithCompletedTasksSerializer
+# frozen_string_literal: true
 
+class GroupWithCompletedTasksSerializer
   def to_h
     data = serializable_hash
 
@@ -7,9 +8,9 @@ class GroupWithCompletedTasksSerializer
       data[:data][:attributes]
 
     elsif data[:data].is_a? Array
-      data[:data].map{ |x| x[:attributes] }
+      data[:data].map { |x| x[:attributes] }
 
-    elsif data[:data] == nil
+    elsif data[:data].nil?
       nil
 
     else
@@ -18,5 +19,7 @@ class GroupWithCompletedTasksSerializer
   end
 
   include FastJsonapi::ObjectSerializer
-  attributes :id, :user_id, :course_id, :name, :group_started, :group_closed, :schedule, :active, :task_count, :completed_task_count, :uncompleted_task_count
+  attributes :id, :user_id, :course_id, :name, :group_started, :group_closed,
+             :schedule, :active, :task_count, :completed_task_count,
+             :uncompleted_task_count
 end
