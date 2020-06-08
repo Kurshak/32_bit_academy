@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class CategoryWithThemesSerializer
   include FastJsonapi::ObjectSerializer
 
@@ -8,9 +10,9 @@ class CategoryWithThemesSerializer
       data[:data][:attributes]
 
     elsif data[:data].is_a? Array
-      data[:data].map{ |x| x[:attributes] }
+      data[:data].map { |x| x[:attributes] }
 
-    elsif data[:data] == nil
+    elsif data[:data].nil?
       nil
 
     else
@@ -21,6 +23,6 @@ class CategoryWithThemesSerializer
   set_type :category
   attributes :id, :course_id, :name, :description, :order_in_cource
   attribute :themes do |object|
-    object.themes.as_json
+    ThemesSerializer.new(object.themes.order(:position, :desc))
   end
 end
