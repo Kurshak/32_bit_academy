@@ -6,15 +6,11 @@ module Api
         class GetGroupsController < ApplicationController
             def by_user
               @groups = Group.where(user_id: params[:user_id])
-              @groups.map{|group|
-                user = User.where(id: group.user_id).first
-                group.user = user
-              }
               render json: GroupsWithUserSerializer.new(@groups).to_h
             end
 
             def students
-              student_ids = StudentsInGroup.select(:student_id).where(group_id: params[:group_id])
+              student_ids = StudentsInGroup.where(group_id: params[:group_id]).pluck(:student_id)
               @students = Student.where(id: student_ids)
               render json: @students.to_json
             end

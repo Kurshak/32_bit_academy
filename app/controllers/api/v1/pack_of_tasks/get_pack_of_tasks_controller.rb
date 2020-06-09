@@ -22,28 +22,16 @@ module Api
 
             def by_name
               @pack_of_tasks = PackOfTask.where('name like ?', params[:name])
-              @pack_of_tasks.map { |pack|
-                task_ids = TasksInPack.select(:task_id).where(pack_of_task_id: pack.id)
-                tasks = Task.where(id: task_ids)
-                pack.tasks = tasks
-              }
-              json_string = PackOfTaskSerializer.new(@pack_of_tasks).to_h
-              render json: json_string
+              render json: PackOfTaskSerializer.new(@pack_of_tasks)
             end
 
             private
 
             def find_theme
               tasks_ids = Task.where(theme_id: @theme_ids).ids
-              pack_of_task_ids = TasksInPack.select(:pack_of_task_id).where(task_id: tasks_ids).order(:order_in_pack)
+              pack_of_task_ids = TasksInPack.where(task_id: tasks_ids).order(:order_in_pack).pluck(:pack_of_task_id)
               @pack_of_tasks = PackOfTask.where(id: pack_of_task_ids)
-              @pack_of_tasks.map { |pack|
-                task_ids = TasksInPack.select(:task_id).where(pack_of_task_id: pack.id)
-                tasks = Task.where(id: task_ids)
-                pack.tasks = tasks
-              }
-              json_string = PackOfTaskSerializer.new(@pack_of_tasks).to_h
-              render json: json_string
+              render json: PackOfTaskSerializer.new(@pack_of_tasks)
             end
         end
       end

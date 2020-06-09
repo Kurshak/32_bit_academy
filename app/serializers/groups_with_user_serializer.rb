@@ -21,6 +21,6 @@ class GroupsWithUserSerializer
   attributes :id, :course_id, :user_id, :name, :schedule, :group_started, :group_closed, :active
 
   attribute :user do |object|
-    object.user.as_json
+    UserSerializer.new(object.user)
   end
 end

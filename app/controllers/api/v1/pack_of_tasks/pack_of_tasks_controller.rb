@@ -8,13 +8,7 @@ module Api
 
         def index
           all_pack = PackOfTask.all
-          all_pack.map { |pack|
-            task_ids = TasksInPack.select(:task_id).where(pack_of_task_id: pack.id)
-            tasks = Task.where(id: task_ids)
-            pack.tasks = tasks
-          }
-          json_string = PackOfTaskSerializer.new(all_pack).to_h
-          render json: json_string
+          render json: PackOfTaskSerializer.new(all_pack)
         end
 
         def create
@@ -31,11 +25,8 @@ module Api
         end
 
         def show
-          task_ids = TasksInPack.select(:task_id).where(pack_of_task_id: @pack_of_task.id)
-          tasks = Task.where(id: task_ids)
-          @pack_of_task.tasks = tasks
-          @json_string = PackOfTaskSerializer.new(@pack_of_task).to_h
-          render json: @json_string
+          task_ids = TasksInPack.where(pack_of_task_id: @pack_of_task.id).pluck(:task_id)
+          render json: PackOfTaskSerializer.new(@pack_of_task)
         end
 
         def update

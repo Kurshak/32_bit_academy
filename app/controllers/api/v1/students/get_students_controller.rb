@@ -34,10 +34,10 @@ module Api
             end
 
             def passed_themes
-              lesson_ids = Attendance.select(:lesson_id).where(student_id: params[:student_id], is_visited: true)
-              theme_ids = Lesson.select(:theme_id).where(id: lesson_ids)
-              category_ids = Theme.select(:category_id).where(id: theme_ids)
-              course_ids = Category.select(:course_id).where(id: category_ids)
+              lesson_ids = Attendance.where(student_id: params[:student_id], is_visited: true).pluck(:lesson_id)
+              theme_ids = Lesson.where(id: lesson_ids).pluck(:theme_id)
+              category_ids = Theme.where(id: theme_ids).pluck(:category_id)
+              course_ids = Category.where(id: category_ids).pluck(:course_id)
 
               themes = Theme.where(id: theme_ids)
               categories = Category.where(id: category_ids)
@@ -46,9 +46,9 @@ module Api
               courses.map{ |course|
                 this_categories_ids = []
                 categories.map{ |category|
-                  this_themes_ids = []
+                    this_themes_ids = []
 
-                  themes.map{ |theme|
+                    themes.map{ |theme|
                     if category.id == theme.category_id
                       this_themes_ids << theme.id
                     end
@@ -67,7 +67,6 @@ module Api
               }
 
               json_string = CourseWithCategoriesAndThemesSerializer.new(courses).to_h
-              #json_string = CategoryWithThemesSerializer.new(categories).serialized_json
               render json: json_string
             end
 

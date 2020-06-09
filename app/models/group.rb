@@ -8,6 +8,6 @@ class Group < ApplicationRecord
 	has_many :paybacks
 	has_many :given_tasks
 
-	attr_accessor :task_count, :completed_task_count, :uncompleted_task_count, :user
-	accepts_nested_attributes_for :students
+	attr_accessor :task_count, :completed_task_count, :uncompleted_task_count
+	accepts_nested_attributes_for :students, :user
 end
