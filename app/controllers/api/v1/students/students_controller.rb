@@ -19,6 +19,10 @@ module Api
             end
           end
 
+          def show
+            render json: @student.to_json
+          end
+
           def student_params
             params.require(:student).permit(:reset_password_token, :reset_password_sent_at, :allow_password_change, :remember_created_at, :confirmation_token, :confirmed_at, :confirmation_sent_at, :unconfirmed_email, :login, :name, :fathername, :surname, :gender, :school, :grade, :grade_in_school, :phone_number, :vk, :adress, :region, :started_academy, :birthday, :email, :tokens)
           end

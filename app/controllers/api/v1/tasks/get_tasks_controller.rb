@@ -44,6 +44,12 @@ module Api
           @tasks = Task.where('name like ?', params[:name])
           render json: @tasks.to_json
         end
+
+        def by_student_group
+          tasks_ids = GivenTask.where(student_id: params[:student_id], group_id: params[:group_id]).pluck(:task_id)
+          @tasks = Task.where(id: tasks_ids)
+          render json: @tasks.to_json
+        end
       end
     end
   end

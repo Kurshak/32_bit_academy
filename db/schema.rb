@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_06_01_164923) do
+ActiveRecord::Schema.define(version: 2020_06_20_031359) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -42,7 +42,6 @@ ActiveRecord::Schema.define(version: 2020_06_01_164923) do
     t.integer "state_of_cheking"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.string "code_file"
     t.string "automatic_evaluation"
     t.string "teacher_evaluation"
     t.string "teacher_comment"

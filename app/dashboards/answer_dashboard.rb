@@ -14,7 +14,7 @@ class AnswerDashboard < Administrate::BaseDashboard
     state_of_cheking: Field::Number,
     created_at: Field::DateTime,
     updated_at: Field::DateTime,
-    code_file: Field::String,
+    code_file: Field::ActiveStorage,
     automatic_evaluation: Field::String,
     teacher_evaluation: Field::String,
     teacher_comment: Field::String,
