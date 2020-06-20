@@ -6,6 +6,7 @@ class Student < ActiveRecord::Base
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
   include DeviseTokenAuth::Concerns::User
+  extend Devise::Models
   has_many :student_parents
   has_many :parents, through: :student_parents
   has_many :students_in_groups
