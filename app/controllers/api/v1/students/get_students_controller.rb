@@ -66,8 +66,7 @@ module Api
                 course.categories = this_categories
               }
 
-              json_string = CourseWithCategoriesAndThemesSerializer.new(courses).to_h
-              render json: json_string
+              render json: CourseWithCategoriesAndThemesSerializer.new(courses)
             end
 
             def completed_given_task

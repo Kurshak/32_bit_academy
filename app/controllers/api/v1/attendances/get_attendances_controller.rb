@@ -11,6 +11,10 @@ module Api
 
             def by_student
               lessons = Lesson.where(group_id: params[:group_id], :datetime => params[:start_time]..params[:end_time])#'datetime >= ? AND datetime <= ?', params[:start_time], params[:end_time])
+              lessons.map{|lesson|
+                attendances = Attendance.where(lesson_id: lesson.id, student_id: params[:student_id])
+                lesson.attendances = attendances
+              }
               render json: LessonsWithAttendancesSerializer.new(lessons).to_h
             end
         end

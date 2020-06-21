@@ -20,7 +20,11 @@ module Api
           end
   
           def show
-            render json: @test.to_json
+            if @test.present?
+              render json: @test.to_json
+            else
+              render_error :bad_request, @test.errors
+            end
           end
   
           def update
