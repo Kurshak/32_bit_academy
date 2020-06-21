@@ -1,60 +1,4 @@
-jsonstring: {"pathToAnswer":"../testing_app/answers/prog1.cpp","tests":[{"input_on_disk":"/home/asus/diplom/32_bit_academy/storage/xq/p4/xqp4xaaf4lpsl5eczs9v55hfwzh5","output_on_disk":"/home/asus/diplom/32_bit_academy/storage/x1/38/x138q3oem3b4zrejk4mmtvi54lhn"},{"input_on_disk":"/home/asus/diplom/32_bit_academy/storage/ns/64/ns6434u4wkrrlu11vukgrs80ltxv","output_on_disk":"/home/asus/diplom/32_bit_academy/storage/rr/xa/rrxar75wxg2u10ocwjen435zjsmc"},{"input_on_disk":"/home/asus/diplom/32_bit_academy/storage/5j/7f/5j7fv8xtk0yarlmhdjeehxswwua3","output_on_disk":"/home/asus/diplom/32_bit_academy/storage/rf/r5/rfr5eqeyb45sxki93vz3nclnt76i"},{"input_on_disk":"/home/asus/diplom/32_bit_academy/storage/tb/gf/tbgf36rpgsdyly291m3owtzqntjj","output_on_disk":"/home/asus/diplom/32_bit_academy/storage/5e/m4/5em4u8wa6iyrfvxigwyh34uhc2yy"},{"input_on_disk":"/home/asus/diplom/32_bit_academy/storage/fc/xd/fcxdpujbpodrctbqr7xsdp8zd4z6","output_on_disk":"/home/asus/diplom/32_bit_academy/storage/2k/ls/2klsfhzii6f811htxtnin2mncu3f"}]}
-
-####################################################################################
-
-/home/asus/diplom/32_bit_academy/storage/xq/p4/xqp4xaaf4lpsl5eczs9v55hfwzh5 : 120 130
-inputdatastr count: 2
-inputdatastr[0] : 120
-inputdatastr[1] : 130
-millisecstart: 54888
-pid: 8118 usage memory: 10540
-usage memory in str: VmSize:	10540 kB
-
-millisec: 54911
-resultstring : a: 120b: 130c: 250
-teststring : a: 120b: 130c: 250
-
-####################################################################################
-
-/home/asus/diplom/32_bit_academy/storage/ns/64/ns6434u4wkrrlu11vukgrs80ltxv : 43 57
-inputdatastr count: 2
-inputdatastr[0] : 43
-inputdatastr[1] : 57
-millisecstart: 54925
-pid: 8127 usage memory: 10540
-usage memory in str: VmSize:	10540 kB
-
-millisec: 54948
-resultstring : a: 43b: 57c: 100
-teststring : a: 43b: 57c: 100
-
-####################################################################################
-
-/home/asus/diplom/32_bit_academy/storage/5j/7f/5j7fv8xtk0yarlmhdjeehxswwua3 : 5 29
-inputdatastr count: 2
-inputdatastr[0] : 5
-inputdatastr[1] : 29
-millisecstart: 54961
-pid: 8136 usage memory: 10540
-usage memory in str: VmSize:	10540 kB
-
-millisec: 54986
-resultstring : a: 5b: 29c: 34
-teststring : a: 5b: 29c: 34
-
-####################################################################################
-
-/home/asus/diplom/32_bit_academy/storage/tb/gf/tbgf36rpgsdyly291m3owtzqntjj : 18 22
-inputdatastr count: 2
-inputdatastr[0] : 18
-inputdatastr[1] : 22
-millisecstart: 55000
-pid: 8145 usage memory: 10540
-usage memory in str: VmSize:	10540 kB
-
-millisec: 55025
-resultstring : a: 18b: 22c: 40
-teststring : a: 18b: 22c: 40
+jsonstring: {"pathToAnswer":"/home/asus/diplom/32_bit_academy/storage/j6/8q/j68qnlugmkzqnno5zr7gsz45klpw","tests":[{"input_on_disk":"/home/asus/diplom/32_bit_academy/storage/fc/xd/fcxdpujbpodrctbqr7xsdp8zd4z6","output_on_disk":"/home/asus/diplom/32_bit_academy/storage/2k/ls/2klsfhzii6f811htxtnin2mncu3f"},{"input_on_disk":"/home/asus/diplom/32_bit_academy/storage/tb/gf/tbgf36rpgsdyly291m3owtzqntjj","output_on_disk":"/home/asus/diplom/32_bit_academy/storage/5e/m4/5em4u8wa6iyrfvxigwyh34uhc2yy"},{"input_on_disk":"/home/asus/diplom/32_bit_academy/storage/5j/7f/5j7fv8xtk0yarlmhdjeehxswwua3","output_on_disk":"/home/asus/diplom/32_bit_academy/storage/rf/r5/rfr5eqeyb45sxki93vz3nclnt76i"},{"input_on_disk":"/home/asus/diplom/32_bit_academy/storage/ns/64/ns6434u4wkrrlu11vukgrs80ltxv","output_on_disk":"/home/asus/diplom/32_bit_academy/storage/rr/xa/rrxar75wxg2u10ocwjen435zjsmc"},{"input_on_disk":"/home/asus/diplom/32_bit_academy/storage/xq/p4/xqp4xaaf4lpsl5eczs9v55hfwzh5","output_on_disk":"/home/asus/diplom/32_bit_academy/storage/x1/38/x138q3oem3b4zrejk4mmtvi54lhn"}]}
 
 ####################################################################################
 
@@ -62,12 +6,68 @@ teststring : a: 18b: 22c: 40
 inputdatastr count: 2
 inputdatastr[0] : 16
 inputdatastr[1] : 24
-millisecstart: 55039
-pid: 8154 usage memory: 0
-usage memory in str: VmSize:	0 kB
+millisecstart: 32700
+pid: 1118 usage memory: 10540
+usage memory in str: VmSize:	10540 kB
 
-millisec: 55066
+millisec: 32725
 resultstring : a: 16b: 24c: 40
 teststring : a: 16b: 24c: 40
-json: { "compilationresult" : "success", "testResults" : [ { "checkstatus" : 1, "peakmemory" : 10540, "runningtime" : 23 }, { "checkstatus" : 1, "peakmemory" : 10540, "runningtime" : 23 }, { "checkstatus" : 1, "peakmemory" : 10540, "runningtime" : 25 }, { "checkstatus" : 1, "peakmemory" : 10540, "runningtime" : 25 }, { "checkstatus" : 1, "peakmemory" : 0, "runningtime" : 27 } ] }
-returntests: {'compilationresult':'success','testResults':[{'checkstatus':1,'peakmemory':10540,'runningtime':23},{'checkstatus':1,'peakmemory':10540,'runningtime':23},{'checkstatus':1,'peakmemory':10540,'runningtime':25},{'checkstatus':1,'peakmemory':10540,'runningtime':25},{'checkstatus':1,'peakmemory':0,'runningtime':27}]}
+
+####################################################################################
+
+/home/asus/diplom/32_bit_academy/storage/tb/gf/tbgf36rpgsdyly291m3owtzqntjj : 18 22
+inputdatastr count: 2
+inputdatastr[0] : 18
+inputdatastr[1] : 22
+millisecstart: 32739
+pid: 1127 usage memory: 10540
+usage memory in str: VmSize:	10540 kB
+
+millisec: 32765
+resultstring : a: 18b: 22c: 40
+teststring : a: 18b: 22c: 40
+
+####################################################################################
+
+/home/asus/diplom/32_bit_academy/storage/5j/7f/5j7fv8xtk0yarlmhdjeehxswwua3 : 5 29
+inputdatastr count: 2
+inputdatastr[0] : 5
+inputdatastr[1] : 29
+millisecstart: 32779
+pid: 1136 usage memory: 10540
+usage memory in str: VmSize:	10540 kB
+
+millisec: 32805
+resultstring : a: 5b: 29c: 34
+teststring : a: 5b: 29c: 34
+
+####################################################################################
+
+/home/asus/diplom/32_bit_academy/storage/ns/64/ns6434u4wkrrlu11vukgrs80ltxv : 43 57
+inputdatastr count: 2
+inputdatastr[0] : 43
+inputdatastr[1] : 57
+millisecstart: 32818
+pid: 1145 usage memory: 10540
+usage memory in str: VmSize:	10540 kB
+
+millisec: 32843
+resultstring : a: 43b: 57c: 100
+teststring : a: 43b: 57c: 100
+
+####################################################################################
+
+/home/asus/diplom/32_bit_academy/storage/xq/p4/xqp4xaaf4lpsl5eczs9v55hfwzh5 : 120 130
+inputdatastr count: 2
+inputdatastr[0] : 120
+inputdatastr[1] : 130
+millisecstart: 32858
+pid: 1154 usage memory: 0
+usage memory in str: VmSize:	0 kB
+
+millisec: 32884
+resultstring : a: 120b: 130c: 250
+teststring : a: 120b: 130c: 250
+json: { "compilationresult" : "success", "testResults" : [ { "checkstatus" : 1, "peakmemory" : 10540, "runningtime" : 25 }, { "checkstatus" : 1, "peakmemory" : 10540, "runningtime" : 26 }, { "checkstatus" : 1, "peakmemory" : 10540, "runningtime" : 26 }, { "checkstatus" : 1, "peakmemory" : 10540, "runningtime" : 25 }, { "checkstatus" : 1, "peakmemory" : 0, "runningtime" : 26 } ] }
+returntests: {'compilationresult':'success','testResults':[{'checkstatus':1,'peakmemory':10540,'runningtime':25},{'checkstatus':1,'peakmemory':10540,'runningtime':26},{'checkstatus':1,'peakmemory':10540,'runningtime':26},{'checkstatus':1,'peakmemory':10540,'runningtime':25},{'checkstatus':1,'peakmemory':0,'runningtime':26}]}

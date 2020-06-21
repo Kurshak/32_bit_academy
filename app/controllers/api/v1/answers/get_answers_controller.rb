@@ -26,7 +26,7 @@ module Api
             task_id = GivenTask.select(:task_id).where(id: answer.given_task_id)
             tests = Test.where(task_id: task_id)
             proc_ans = ProcessingAnswer.new
-            proc_ans.pathToAnswer = answer.codefile_on_disk
+            proc_ans.pathToAnswer = answer.code_file_on_disk
             proc_ans.tests = tests
             answer.state_of_cheking = 1
             answer.save

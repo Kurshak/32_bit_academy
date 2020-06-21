@@ -1,22 +1,12 @@
 class TestSerializer
   include FastJsonapi::ObjectSerializer
+  attributes :order_in_task
 
-  def to_h
-    data = serializable_hash
-
-    if data[:data].is_a? Hash
-      data[:data][:attributes]
-
-    elsif data[:data].is_a? Array
-      data[:data].map{ |x| x[:attributes] }
-
-    elsif data[:data] == nil
-      nil
-
-    else
-      data
-    end
+  attribute :input do |object|
+    object.input.download
   end
 
-  attributes :input_on_disk, :output_on_disk
+  attribute :output do |object|
+    object.output.download
+  end
 end

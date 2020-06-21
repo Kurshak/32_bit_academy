@@ -1,4 +1,4 @@
-class ProcessingAnswerSerializer
+class TestPathSerializer
   include FastJsonapi::ObjectSerializer
 
   def to_h
@@ -18,8 +18,5 @@ class ProcessingAnswerSerializer
     end
   end
 
-  attributes :pathToAnswer
-  attribute :tests do |object|
-    TestPathSerializer.new(object.tests).to_h
-  end
+  attributes :input_on_disk, :output_on_disk
 end
