@@ -17,5 +17,5 @@ test:
 production:
   <<: *default
   database: academy_32_bit_production
-  username: academy_32_bit
+  username: deploy
   password: <%= ENV['ACADEMY_32_BIT_DATABASE_PASSWORD'] %>
