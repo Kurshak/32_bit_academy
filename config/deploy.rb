@@ -23,7 +23,7 @@ set :disallow_pushing, true
 set :keep_releases, 2
 
 set :rvm_type, :user # Defaults to: :auto
-set :rvm_ruby_version, 'ruby 2.6.3p62' # Defaults to: 'default'
+set :rvm_ruby_version, '2.6.3' # Defaults to: 'default'
 
 set :nvm_type, :user
 set :nvm_node, 'v12.17.0'
