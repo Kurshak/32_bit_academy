@@ -11,7 +11,7 @@ set :deploy_to, '/home/deploy/projects/32bita.ru'
 
 set :log_level, :info
 
-set :linked_files, %w[config/application.yml puma.rb]
+set :linked_files, %w[config/application.yml puma.rb config/master.key]
 set :linked_dirs, %w[log tmp/pids tmp/cache tmp/sockets vendor/bundle public/system public/assets]
 
 # for sync
