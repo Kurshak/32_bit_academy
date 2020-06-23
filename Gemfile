@@ -55,3 +55,12 @@ gem 'mini_magick'
 gem  "image_processing"
 
 gem 'fast_jsonapi'
+
+group :deploy do
+  gem 'capistrano'
+  gem 'capistrano-rails'
+  gem 'capistrano-rvm'
+  gem 'capistrano3-puma'
+  gem 'capistrano-nvm', require: false
+  gem "capistrano-db-tasks", require: false
+end
