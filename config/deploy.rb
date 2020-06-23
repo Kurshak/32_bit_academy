@@ -11,7 +11,7 @@ set :deploy_to, '/home/deploy/projects/32bita.ru'
 
 set :log_level, :info
 
-set :linked_files, %w[config/application.yml puma.rb config/master.key]
+set :linked_files, %w[config/application.yml config/master.key]
 set :linked_dirs, %w[log tmp/pids tmp/cache tmp/sockets vendor/bundle public/system public/assets]
 
 # for sync
@@ -28,5 +28,7 @@ set :rvm_ruby_version, '2.6.3' # Defaults to: 'default'
 set :nvm_type, :user
 set :nvm_node, 'v12.17.0'
 set :nvm_map_bins, %w[node npm yarn]
+
+set :puma_init_active_record, true
 
 set :pty, true
