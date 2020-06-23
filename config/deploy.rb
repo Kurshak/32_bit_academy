@@ -30,14 +30,3 @@ set :nvm_node, 'v12.17.0'
 set :nvm_map_bins, %w[node npm yarn]
 
 set :pty, true
-
-namespace :deploy do
-  desc 'Restart application'
-  task :restart do
-    on roles(:app), in: :sequence, wait: 5 do
-      invoke 'puma:restart'
-    end
-  end
-
-  after :publishing, :restart
-end
