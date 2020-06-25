@@ -37,14 +37,14 @@ class StudentDashboard < Administrate::BaseDashboard
     grade_in_school: Field::String,
     phone_number: Field::String,
     vk: Field::String,
-    adress: Field::String,
+    address: Field::String,
     region: Field::String,
     started_academy: Field::DateTime,
     birthday: Field::DateTime,
     email: Field::String,
-    tokens: Field::String.with_options(searchable: false),
     created_at: Field::DateTime,
     updated_at: Field::DateTime,
+    discord: Field::String,
   }.freeze
 
   # COLLECTION_ATTRIBUTES
@@ -91,14 +91,14 @@ class StudentDashboard < Administrate::BaseDashboard
     :grade_in_school,
     :phone_number,
     :vk,
-    :adress,
+    :address,
     :region,
     :started_academy,
     :birthday,
     :email,
-    :tokens,
     :created_at,
     :updated_at,
+    :discord,
   ].freeze
 
   # FORM_ATTRIBUTES
@@ -133,12 +133,12 @@ class StudentDashboard < Administrate::BaseDashboard
     :grade_in_school,
     :phone_number,
     :vk,
-    :adress,
+    :address,
     :region,
     :started_academy,
     :birthday,
     :email,
-    :tokens,
+    :discord,
   ].freeze
 
   # Overwrite this method to customize how students are displayed

@@ -30,7 +30,6 @@ class UserDashboard < Administrate::BaseDashboard
     phone_number: Field::String,
     role: Field::String,
     email: Field::String,
-    tokens: Field::String.with_options(searchable: false),
     created_at: Field::DateTime,
     updated_at: Field::DateTime,
   }.freeze
@@ -72,7 +71,6 @@ class UserDashboard < Administrate::BaseDashboard
     :phone_number,
     :role,
     :email,
-    :tokens,
     :created_at,
     :updated_at,
   ].freeze
@@ -102,7 +100,6 @@ class UserDashboard < Administrate::BaseDashboard
     :phone_number,
     :role,
     :email,
-    :tokens,
   ].freeze
 
   # Overwrite this method to customize how users are displayed

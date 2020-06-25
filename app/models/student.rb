@@ -6,7 +6,6 @@ class Student < ActiveRecord::Base
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
   include DeviseTokenAuth::Concerns::User
-  extend Devise::Models
   has_many :student_parents
   has_many :parents, through: :student_parents
   has_many :students_in_groups
@@ -14,6 +13,8 @@ class Student < ActiveRecord::Base
   has_many :attendances
   has_many :paybacks
   has_many :payments
+
+  validates :email, uniqueness: true
 
   attr_accessor :uncompleted_task_count, :unchecked_answers_count
 end

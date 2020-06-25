@@ -159,12 +159,7 @@ Rails.application.routes.draw do
     root to: "users#index"
   end
   mount_devise_token_auth_for 'User', at: 'auth'
-  scope :student do
-    mount_devise_token_auth_for 'Student', at: 'auth'
-  end
-  as :student do
-    # Define routes for Student within this block.
-  end
+  mount_devise_token_auth_for 'Student', at: 'student_auth'
 
   namespace :api do
     namespace :v1 do
