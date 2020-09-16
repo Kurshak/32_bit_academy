@@ -8,13 +8,14 @@ class AnswerDashboard < Administrate::BaseDashboard
   # which determines how the attribute is displayed
   # on pages throughout the dashboard.
   ATTRIBUTE_TYPES = {
+    code_file_attachment: Field::HasOne,
+    code_file_blob: Field::HasOne,
     given_task: Field::BelongsTo,
     id: Field::Number,
     date_of_answer: Field::DateTime,
     state_of_cheking: Field::Number,
     created_at: Field::DateTime,
     updated_at: Field::DateTime,
-    code_file: Field::ActiveStorage,
     automatic_evaluation: Field::String,
     teacher_evaluation: Field::String,
     teacher_comment: Field::String,
@@ -27,22 +28,23 @@ class AnswerDashboard < Administrate::BaseDashboard
   # By default, it's limited to four items to reduce clutter on index pages.
   # Feel free to add, remove, or rearrange items.
   COLLECTION_ATTRIBUTES = [
+    :code_file_attachment,
+    :code_file_blob,
     :given_task,
     :id,
-    :date_of_answer,
-    :state_of_cheking,
   ].freeze
 
   # SHOW_PAGE_ATTRIBUTES
   # an array of attributes that will be displayed on the model's show page.
   SHOW_PAGE_ATTRIBUTES = [
+    :code_file_attachment,
+    :code_file_blob,
     :given_task,
     :id,
     :date_of_answer,
     :state_of_cheking,
     :created_at,
     :updated_at,
-    :code_file,
     :automatic_evaluation,
     :teacher_evaluation,
     :teacher_comment,
@@ -53,10 +55,11 @@ class AnswerDashboard < Administrate::BaseDashboard
   # an array of attributes that will be displayed
   # on the model's form (`new` and `edit`) pages.
   FORM_ATTRIBUTES = [
+    :code_file_attachment,
+    :code_file_blob,
     :given_task,
     :date_of_answer,
     :state_of_cheking,
-    :code_file,
     :automatic_evaluation,
     :teacher_evaluation,
     :teacher_comment,

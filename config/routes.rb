@@ -2,7 +2,7 @@
 
 Rails.application.routes.draw do
   namespace :admin, as: '' do
-    #resources :users
+    # resources :users
     get '/users', to: 'users#index', as: 'admin_users'
     get '/users/new', to: 'users#new', as: 'new_admin_user'
     post '/users', to: 'users#create'
@@ -10,8 +10,8 @@ Rails.application.routes.draw do
     get '/users/:id/edit', to: 'users#edit', as: 'edit_admin_user'
     patch '/users/:id', to: 'users#update'
     delete '/users/:id', to: 'users#destroy'
-        
-    #resources :
+
+    # resources :
     get '/students', to: 'students#index', as: 'admin_students'
     get '/students/new', to: 'students#new', as: 'new_admin_student'
     post '/students', to: 'students#create'
@@ -19,7 +19,7 @@ Rails.application.routes.draw do
     get '/students/:id/edit', to: 'students#edit', as: 'edit_admin_student'
     patch '/students/:id', to: 'students#update'
     delete '/students/:id', to: 'students#destroy'
-    #resources :answers
+    # resources :answers
     get '/answers', to: 'answers#index', as: 'admin_answers'
     get '/answers/new', to: 'answers#new', as: 'new_admin_answer'
     post '/answers', to: 'answers#create'
@@ -27,7 +27,7 @@ Rails.application.routes.draw do
     get '/answers/:id/edit', to: 'answers#edit', as: 'edit_admin_answer'
     patch '/answers/:id', to: 'answers#update'
     delete '/answers/:id', to: 'answers#destroy'
-    #resources :attendances
+    # resources :attendances
     get '/attendances', to: 'attendances#index', as: 'admin_attendances'
     get '/attendances/new', to: 'attendances#new', as: 'new_admin_attendance'
     post '/attendances', to: 'attendances#create'
@@ -35,7 +35,7 @@ Rails.application.routes.draw do
     get '/attendances/:id/edit', to: 'attendances#edit', as: 'edit_admin_attendance'
     patch '/attendances/:id', to: 'attendances#update'
     delete '/attendances/:id', to: 'attendances#destroy'
-    #resources :categories
+    # resources :categories
     get '/categories', to: 'categories#index', as: 'admin_categories'
     get '/categories/new', to: 'categories#new', as: 'new_admin_category'
     post '/categories', to: 'categories#create'
@@ -43,7 +43,7 @@ Rails.application.routes.draw do
     get '/categories/:id/edit', to: 'categories#edit', as: 'edit_admin_category'
     patch '/categories/:id', to: 'categories#update'
     delete '/categories/:id', to: 'categories#destroy'
-    #resources :courses
+    # resources :courses
     get '/courses', to: 'courses#index', as: 'admin_courses'
     get '/courses/new', to: 'courses#new', as: 'new_admin_course'
     post '/courses', to: 'courses#create'
@@ -51,7 +51,7 @@ Rails.application.routes.draw do
     get '/courses/:id/edit', to: 'courses#edit', as: 'edit_admin_course'
     patch '/courses/:id', to: 'courses#update'
     delete '/courses/:id', to: 'courses#destroy'
-    #resources :given_tasks
+    # resources :given_tasks
     get '/given_tasks', to: 'given_tasks#index', as: 'admin_given_tasks'
     get '/given_tasks/new', to: 'given_tasks#new', as: 'new_admin_given_task'
     post '/given_tasks', to: 'given_tasks#create'
@@ -59,7 +59,7 @@ Rails.application.routes.draw do
     get '/given_tasks/:id/edit', to: 'given_tasks#edit', as: 'edit_admin_given_task'
     patch '/given_tasks/:id', to: 'given_tasks#update'
     delete '/given_tasks/:id', to: 'given_tasks#destroy'
-    #resources :groups
+    # resources :groups
     get '/groups', to: 'groups#index', as: 'admin_groups'
     get '/groups/new', to: 'groups#new', as: 'new_admin_group'
     post '/groups', to: 'groups#create'
@@ -67,7 +67,7 @@ Rails.application.routes.draw do
     get '/groups/:id/edit', to: 'groups#edit', as: 'edit_admin_group'
     patch '/groups/:id', to: 'groups#update'
     delete '/groups/:id', to: 'groups#destroy'
-    #resources :lessons
+    # resources :lessons
     get '/lessons', to: 'lessons#index', as: 'admin_lessons'
     get '/lessons/new', to: 'lessons#new', as: 'new_admin_lesson'
     post '/lessons', to: 'lessons#create'
@@ -75,7 +75,7 @@ Rails.application.routes.draw do
     get '/lessons/:id/edit', to: 'lessons#edit', as: 'edit_admin_lesson'
     patch '/lessons/:id', to: 'lessons#update'
     delete '/lessons/:id', to: 'lessons#destroy'
-    #resources :pack_of_tasks
+    # resources :pack_of_tasks
     get '/pack_of_tasks', to: 'pack_of_tasks#index', as: 'admin_pack_of_tasks'
     get '/pack_of_tasks/new', to: 'pack_of_tasks#new', as: 'new_admin_pack_of_task'
     post '/pack_of_tasks', to: 'pack_of_tasks#create'
@@ -83,7 +83,7 @@ Rails.application.routes.draw do
     get '/pack_of_tasks/:id/edit', to: 'pack_of_tasks#edit', as: 'edit_admin_pack_of_task'
     patch '/pack_of_tasks/:id', to: 'pack_of_tasks#update'
     delete '/pack_of_tasks/:id', to: 'pack_of_tasks#destroy'
-    #resources :parents
+    # resources :parents
     get '/parents', to: 'parents#index', as: 'admin_parents'
     get '/parents/new', to: 'parents#new', as: 'new_admin_parent'
     post '/parents', to: 'parents#create'
@@ -91,7 +91,7 @@ Rails.application.routes.draw do
     get '/parents/:id/edit', to: 'parents#edit', as: 'edit_admin_parent'
     patch '/parents/:id', to: 'parents#update'
     delete '/parents/:id', to: 'parents#destroy'
-    #resources :paybacks
+    # resources :paybacks
     get '/paybacks', to: 'paybacks#index', as: 'admin_paybacks'
     get '/paybacks/new', to: 'paybacks#new', as: 'new_admin_payback'
     post '/paybacks', to: 'paybacks#create'
@@ -99,7 +99,7 @@ Rails.application.routes.draw do
     get '/paybacks/:id/edit', to: 'paybacks#edit', as: 'edit_admin_payback'
     patch '/paybacks/:id', to: 'paybacks#update'
     delete '/paybacks/:id', to: 'paybacks#destroy'
-    #resources :payments
+    # resources :payments
     get '/payments', to: 'payments#index', as: 'admin_payments'
     get '/payments/new', to: 'payments#new', as: 'new_admin_payment'
     post '/payments', to: 'payments#create'
@@ -107,7 +107,7 @@ Rails.application.routes.draw do
     get '/payments/:id/edit', to: 'payments#edit', as: 'edit_admin_payment'
     patch '/payments/:id', to: 'payments#update'
     delete '/payments/:id', to: 'payments#destroy'
-    #resources :student_parents
+    # resources :student_parents
     get '/student_parents', to: 'student_parents#index', as: 'admin_student_parents'
     get '/student_parents/new', to: 'student_parents#new', as: 'new_admin_student_parent'
     post '/student_parents', to: 'student_parents#create'
@@ -115,7 +115,7 @@ Rails.application.routes.draw do
     get '/student_parents/:id/edit', to: 'student_parents#edit', as: 'edit_admin_student_parent'
     patch '/student_parents/:id', to: 'student_parents#update'
     delete '/student_parents/:id', to: 'student_parents#destroy'
-    #resources :students_in_groups
+    # resources :students_in_groups
     get '/students_in_groups', to: 'students_in_groups#index', as: 'admin_students_in_groups'
     get '/students_in_groups/new', to: 'students_in_groups#new', as: 'new_admin_students_in_group'
     post '/students_in_groups', to: 'students_in_groups#create'
@@ -123,7 +123,7 @@ Rails.application.routes.draw do
     get '/students_in_groups/:id/edit', to: 'students_in_groups#edit', as: 'edit_admin_students_in_group'
     patch '/students_in_groups/:id', to: 'students_in_groups#update'
     delete '/students_in_groups/:id', to: 'students_in_groups#destroy'
-    #resources :tasks
+    # resources :tasks
     get '/tasks', to: 'tasks#index', as: 'admin_tasks'
     get '/tasks/new', to: 'tasks#new', as: 'new_admin_task'
     post '/tasks', to: 'tasks#create'
@@ -131,7 +131,7 @@ Rails.application.routes.draw do
     get '/tasks/:id/edit', to: 'tasks#edit', as: 'edit_admin_task'
     patch '/tasks/:id', to: 'tasks#update'
     delete '/tasks/:id', to: 'tasks#destroy'
-    #resources :tasks_in_packs
+    # resources :tasks_in_packs
     get '/tasks_in_packs', to: 'tasks_in_packs#index', as: 'admin_tasks_in_packs'
     get '/tasks_in_packs/new', to: 'tasks_in_packs#new', as: 'new_admin_tasks_in_pack'
     post '/tasks_in_packs', to: 'tasks_in_packs#create'
@@ -139,7 +139,7 @@ Rails.application.routes.draw do
     get '/tasks_in_packs/:id/edit', to: 'tasks_in_packs#edit', as: 'edit_admin_tasks_in_pack'
     patch '/tasks_in_packs/:id', to: 'tasks_in_packs#update'
     delete '/tasks_in_packs/:id', to: 'tasks_in_packs#destroy'
-    #resources :tests
+    # resources :tests
     get '/tests', to: 'tests#index', as: 'admin_tests'
     get '/tests/new', to: 'tests#new', as: 'new_admin_test'
     post '/tests', to: 'tests#create'
@@ -147,7 +147,7 @@ Rails.application.routes.draw do
     get '/tests/:id/edit', to: 'tests#edit', as: 'edit_admin_test'
     patch '/tests/:id', to: 'tests#update'
     delete '/tests/:id', to: 'tests#destroy'
-    #resources :themes
+    # resources :themes
     get '/themes', to: 'themes#index', as: 'admin_themes'
     get '/themes/new', to: 'themes#new', as: 'new_admin_theme'
     post '/themes', to: 'themes#create'
@@ -155,8 +155,8 @@ Rails.application.routes.draw do
     get '/themes/:id/edit', to: 'themes#edit', as: 'edit_admin_theme'
     patch '/themes/:id', to: 'themes#update'
     delete '/themes/:id', to: 'themes#destroy'
-  
-    root to: "users#index"
+
+    # root to: 'users#index'
   end
   mount_devise_token_auth_for 'User', at: 'auth'
   mount_devise_token_auth_for 'Student', at: 'student_auth'
@@ -226,8 +226,9 @@ Rails.application.routes.draw do
       namespace :tests do
         resources :tests
         put 'change_order', controller: 'put_tests'
-        get  'by_task', controller: 'get_tests'
+        get 'by_task', controller: 'get_tests'
       end
     end
   end
+  root 'home#home'
 end

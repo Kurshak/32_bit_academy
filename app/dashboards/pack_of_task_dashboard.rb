@@ -9,6 +9,7 @@ class PackOfTaskDashboard < Administrate::BaseDashboard
   # on pages throughout the dashboard.
   ATTRIBUTE_TYPES = {
     tasks_in_packs: Field::HasMany,
+    tasks: Field::HasMany,
     id: Field::Number,
     user_id: Field::Number,
     date_of_creation: Field::DateTime,
@@ -25,15 +26,16 @@ class PackOfTaskDashboard < Administrate::BaseDashboard
   # Feel free to add, remove, or rearrange items.
   COLLECTION_ATTRIBUTES = [
     :tasks_in_packs,
+    :tasks,
     :id,
     :user_id,
-    :date_of_creation,
   ].freeze
 
   # SHOW_PAGE_ATTRIBUTES
   # an array of attributes that will be displayed on the model's show page.
   SHOW_PAGE_ATTRIBUTES = [
     :tasks_in_packs,
+    :tasks,
     :id,
     :user_id,
     :date_of_creation,
@@ -48,6 +50,7 @@ class PackOfTaskDashboard < Administrate::BaseDashboard
   # on the model's form (`new` and `edit`) pages.
   FORM_ATTRIBUTES = [
     :tasks_in_packs,
+    :tasks,
     :user_id,
     :date_of_creation,
     :name,

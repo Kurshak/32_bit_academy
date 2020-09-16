@@ -11,6 +11,7 @@ class GroupDashboard < Administrate::BaseDashboard
     course: Field::BelongsTo,
     user: Field::BelongsTo,
     students_in_groups: Field::HasMany,
+    students: Field::HasMany,
     lessons: Field::HasMany,
     payments: Field::HasMany,
     paybacks: Field::HasMany,
@@ -34,7 +35,7 @@ class GroupDashboard < Administrate::BaseDashboard
     :course,
     :user,
     :students_in_groups,
-    :lessons,
+    :students,
   ].freeze
 
   # SHOW_PAGE_ATTRIBUTES
@@ -43,6 +44,7 @@ class GroupDashboard < Administrate::BaseDashboard
     :course,
     :user,
     :students_in_groups,
+    :students,
     :lessons,
     :payments,
     :paybacks,
@@ -64,6 +66,7 @@ class GroupDashboard < Administrate::BaseDashboard
     :course,
     :user,
     :students_in_groups,
+    :students,
     :lessons,
     :payments,
     :paybacks,
